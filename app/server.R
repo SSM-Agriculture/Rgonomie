@@ -32,7 +32,6 @@ server <- function(input, output, session){
   # Export
   shinyFileSave(input, "export_dl_cerise", root = adr_cerise) # Initialisation du bouton parcourir dans Cerise
   output$export_dl_poste <- dl_poste("export", input) # Enregistrement sur le poste
-  dl_cerise("export", input, output, session) # Enregistrement sur CERISE
   
   # Visualiseur
   visu_server("visu", input, output, session)
