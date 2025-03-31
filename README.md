@@ -13,9 +13,9 @@ et réaliser des **traitements statistiques de base**.
 
 ## Contributions
 
-Si vous constatez des bugs, merci d'ouvrir une issue [A VENIR] et une Pull Request [A VENIR].
+Si vous constatez des bugs, merci d'ouvrir une [issue](https://github.com/SSM-Agriculture/Rgonomie/issues) ou une [Pull Request](https://github.com/SSM-Agriculture/Rgonomie/pulls).
 
 ## Internationalisation
 
 Si vous souhaitez que cette application soit disponible dans d'autres langages, faites-le 
-nous savoir à travers une issue [A VENIR].
+nous savoir à travers une [issue](https://github.com/SSM-Agriculture/Rgonomie/issues).
