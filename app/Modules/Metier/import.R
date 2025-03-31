@@ -114,22 +114,12 @@ import_fichier_selec <- function(id_onglet, input, output, session){
   outputOptions(output, "fichier_existe", suspendWhenHidden = FALSE)
   
   observeEvent(
-    c(input[[paste0(id_onglet, "_cerise")]], input[[paste0(id_onglet, "_poste")]]),
+    c(input[[paste0(id_onglet, "_poste")]]),
     { 
-      # On récupère le fichier
-      if (input[[paste0(id_onglet, "_type")]] == "CERISE"){
-        # Depuis CERISE
-        fichier <- parseFilePaths(roots=adr_cerise, selection=input[[paste0(id_onglet, "_cerise")]])
-        chemin_fichier <<- as.character(fichier$datapath)
-        output[[paste0(id_onglet, "_nom_fic")]] <- renderUI(HTML(paste0("<i><B>Fichier sélectionné : ", 
-                                                                        as.character(fichier$name), 
-                                                                    "</i></B>")))
-        } else{
-        # Depuis le poste
-        fichier <- input[[paste0(id_onglet, "_poste")]]
-        chemin_fichier <<- as.character(fichier$datapath)
-        output[[paste0(id_onglet, "_nom_fic")]] <- renderText(as.character(fichier$name))
-      }
+      # On récupère le fichier depuis le poste
+      fichier <- input[[paste0(id_onglet, "_poste")]]
+      chemin_fichier <<- as.character(fichier$datapath)
+      output[[paste0(id_onglet, "_nom_fic")]] <- renderText(as.character(fichier$name))
       
       # On bloque le traitement tant que le fichier n'est pas chargé
       if(length(chemin_fichier) <= 0) return({})
@@ -140,7 +130,6 @@ import_fichier_selec <- function(id_onglet, input, output, session){
       
       # On repère l'extension
       extension <- tolower(strsplit(chemin_fichier,"\\.")[[1]][length(strsplit(chemin_fichier,"\\.")[[1]])])
-      # extension <- 'csv'
       
       # Extensions reconnues
       if (extension %in% c("csv", "txt", "sav", "sas7bdat", "rdata", "rds", "xls", "xlsx", "ods", "parquet")){
