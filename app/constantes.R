@@ -1,7 +1,3 @@
-##### Répertoire CERISE #####
-adr_cerise <- c(root="~/")
-
-
 ##### Mail assistance #####
 mail_assist <- paste0(
   "window.open('mailto:assistance.si-stat.sg@agriculture.gouv.fr?subject=[CERISE] demande assistance : Rgonomie' , '_blank')"

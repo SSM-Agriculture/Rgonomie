@@ -413,31 +413,3 @@ tableaux_generer_syntaxe <- function(id_onglet, input, output, session){
     
   })
 }
-
-
-dl_cerise_tab <- function(id_onglet, input, output, session){
-  
-  observeEvent(input[[paste0(id_onglet, "_dl_cerise")]],{
-    
-    # On trace l'utilisation de l'onglet
-    ecrire_log(id_onglet)
-    
-    # On récupère le chemin et le nom du fichier indiqué par l'utilisateur
-    fileinfo <- parseSavePath(roots=adr_cerise, input[[paste0(id_onglet, "_dl_cerise")]])
-    
-    if (length(fileinfo$datapath) != 0) { 
-      
-      # Si le nom du fichier ne se termine pas par l'extension choisie, on la rajoute
-      if (substr(fileinfo$datapath, nchar(fileinfo$datapath)-3, nchar(fileinfo$datapath)) != ".xlsx"){
-        fileinfo$datapath <- paste(fileinfo$datapath, "xlsx", sep=".")
-      }
-      tab <- eval(parse(text=vec_commande))
-      tab_dl <- as.matrix(tab)
-      write.xlsx(tab_dl, fileinfo$datapath, col.names = F, row.names = F)
-      
-    }
-    
-  })
-  
-  
-}

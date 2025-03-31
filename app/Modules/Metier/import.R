@@ -497,25 +497,14 @@ import_valider <- function(id_onglet, input, output, session){
           
           # Sinon
         } else{
- 
-          if (types_manuels[!(types_manuels == types_auto)] == "date") {
-            #col_types = cols(date_colonne = col_date(format = "%m/%d/%Y")
-            # On construit une chaine avec les noms des types de colonnes qui ont été modifiés
-            # col_date n'est pas une fonction reconnue avec read.table , on fait rien 
-            #col_types <- paste0('"', names(types_auto[!(types_manuels == types_auto)]), '"=col_date(format ="%m/%d/%Y")"', collapse = ", ")
-            #col_types <- paste0(', colClasses=c(', col_types, ')') 
-
-            col_types <- ""
           
-           } else {
-             # On construit une chaine avec les noms des types de colonnes qui ont été modifiés
-             col_types <- paste0('"', names(types_auto[!(types_manuels == types_auto)]), '"="',
-                                 types_manuels[!(types_manuels == types_auto)], '"', collapse = ", ")
-             col_types <- paste0(', colClasses=c(', col_types, ')') 
- 
-          }
+          # On construit une chaine avec les noms des types de colonnes qui ont été modifiés
+          col_types <- paste0('"', names(types_auto[!(types_manuels == types_auto)]), '"="',
+                              types_manuels[!(types_manuels == types_auto)], '"', collapse = ", ")
+          col_types <- paste0(', colClasses=c(', col_types, ')') 
+          
         }
-
+        
         # La commande générée avec transformation des "-" en "_"
         commande <- paste0('read.table(file="', chemin_fichier, '", check.names = FALSE, header=', 
                            input[[paste0(id_onglet, "_fic_entete")]],
@@ -560,24 +549,6 @@ import_valider <- function(id_onglet, input, output, session){
         afficher_message(id_onglet, e, "red", output)
       })
       
-      
-      # Convertir les colonnes de date si nécessaire si csv 
-      if (extension %in% c("csv", "txt") ) {
-        if (types_manuels[!(types_manuels == types_auto)] == "date") {
-        print(types_manuels)
-        print("herve")
-        #Sélectionner uniquement les colonnes de type Date
-        #colonnes_date <- types_manuels[,sapply(types_manuels[!(types_manuels == types_auto)], class) == "date"]
-        #colonnes_date <- types_manuels[,sapply(types_manuels, is.DateTime)]
-        #colonnes_date <- types_manuels[,sapply(types_manuels,function(x) inherits(x, "Date")), drop = FALSE]
-        #colonnes_date <- types_manuels[,sapply(types_manuels[!(types_manuels == types_auto)], class) == "date"]
-        #print(colonnes_date)
-        # print(names(table_sortie))
-        # df <- table_sortie$table_sortie[[1]]
-        # print(df)
-        # df$Creation <- as.Date(df$Creation, format = "%Y-%m-%d %H:%M:%S")
-        }
-      }
       
       # Une fois le traitement fini on enlève la fenêtre modale
       removeModal()
