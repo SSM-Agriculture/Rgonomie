@@ -93,13 +93,7 @@ ui_import <- function(id_onglet){
 }
 
 
-
-
-
-
 ##### Server du tri #####
-
-
 
 # Détection du type de fichier
 # Quand un fichier est sélectionné, on affiche la fenêtre modale avec les paramètres nécessaires à l'ouverture
@@ -108,8 +102,7 @@ import_fichier_selec <- function(id_onglet, input, output, session){
   
   # Pour gérer l'affichage/masquage des paramètres si un fichier correspondant n'a pas été sélectionné
   output$fichier_existe <- reactive({
-    return((!is.null(input[[paste0(id_onglet, "_cerise")]]) & (input[[paste0(id_onglet, "_type")]] == "CERISE")) |
-             (!is.null(input[[paste0(id_onglet, "_poste")]]) & (input[[paste0(id_onglet, "_type")]] == "le poste local")))
+    return((!is.null(input[[paste0(id_onglet, "_poste")]]) & (input[[paste0(id_onglet, "_type")]] == "le poste local")))
   })
   outputOptions(output, "fichier_existe", suspendWhenHidden = FALSE)
   
@@ -348,7 +341,6 @@ import_nom_colonnes <- function(id_onglet, input, output, session){
         
       }
     }
-    runjs("Shiny.setInputValue( 'import_cerise', null );")
     output$fichier_existe <- reactive({
       return(TRUE)
       })
