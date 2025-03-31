@@ -18,27 +18,13 @@ ui_import <- function(id_onglet){
     
     HTML("<br/><br/>"),
     
-    # Choix de l'emplacement du fichier
+    # Boutons parcourir
     fluidRow(
       column(12, align="center",
-             selectInput(inputId=paste0(id_onglet, "_type"), label="Importer un fichier depuis",
-                         choices=c("CERISE", "le poste local"), selected="CERISE")
-      )
-    ),
-    
-    # Boutons parcourir en fonctoin de l'emplacement indiqué
-    fluidRow(
-      column(12, align="center",
-             conditionalPanel(condition=paste0("input.", id_onglet, "_type == 'CERISE'"),
-                              shinyFilesButton(id = paste0(id_onglet, "_cerise"), label="Parcourir",
-                                               title="Importer un fichier", multiple=F),
-             ),
-             conditionalPanel(condition=paste0("input.", id_onglet, "_type == 'le poste local'"),
-                              fileInput(inputId=paste0(id_onglet, "_poste"), 
-                                        label="", buttonLabel = "Parcourir",
-                                        accept = list(".csv",".txt",".sas7bdat",".sav", 
-                                                      ".rdata", ".rds", ".xls", ".xlsx", ".ods", ".parquet"))
-             )
+             fileInput(inputId=paste0(id_onglet, "_poste"), 
+                       label="", buttonLabel = "Parcourir",
+                       accept = list(".csv",".txt",".sas7bdat",".sav", 
+                                     ".rdata", ".rds", ".xls", ".xlsx", ".ods", ".parquet"))
       )
     ),
     
