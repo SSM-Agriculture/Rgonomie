@@ -270,22 +270,12 @@ import_fichier_selec <- function(id_onglet, input, output, session){
 import_nom_colonnes <- function(id_onglet, input, output, session){
   observeEvent(input[[paste0(id_onglet, "_valid_param")]],{
     
-    # On récupère le fichier
-    if (input[[paste0(id_onglet, "_type")]] == "CERISE"){
-      
-      # Depuis CERISE
-      fichier <<- parseFilePaths(roots=adr_cerise, selection=input[[paste0(id_onglet, "_cerise")]])
-      chemin_fichier <<- as.character(fichier$datapath)
-      
-    } else{
-      # Depuis le poste
-      fichier <<- input[[paste0(id_onglet, "_poste")]]
-      chemin_fichier <<- as.character(fichier$datapath)
-    }
+    # On récupère le fichier depuis le poste
+    fichier <<- input[[paste0(id_onglet, "_poste")]]
+    chemin_fichier <<- as.character(fichier$datapath)
     
     # On repère l'extension
     extension <<- tolower(strsplit(chemin_fichier,"\\.")[[1]][length(strsplit(chemin_fichier,"\\.")[[1]])])
-
     
     
     # On lit la table
