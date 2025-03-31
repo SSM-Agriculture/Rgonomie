@@ -22,7 +22,7 @@ ui_import <- function(id_onglet){
     fluidRow(
       column(12, align="center",
              fileInput(inputId=paste0(id_onglet, "_poste"), 
-                       label="", buttonLabel = "Parcourir",
+                       label="Choisir un fichier", buttonLabel = "Parcourir",
                        accept = list(".csv",".txt",".sas7bdat",".sav", 
                                      ".rdata", ".rds", ".xls", ".xlsx", ".ods", ".parquet"))
       )
@@ -31,7 +31,7 @@ ui_import <- function(id_onglet){
     HTML("<br/><br/>"),
     
     # Bloc avec les paramètres, masqué tant qu'aucun fichier n'est sélectionné
-    conditionalPanel(condition=paste0("(output.fichier_existe) || input.", id_onglet, "_cerise != null"),
+    conditionalPanel(condition=paste0("(output.fichier_existe) || input.", id_onglet, "_poste != null"),
                      div(id=paste0(id_onglet, "_bloc"),
                          
                          # affichage du nom du fichier chargé
