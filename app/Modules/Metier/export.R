@@ -71,12 +71,6 @@ ui_export <- function(id_onglet){
                        column(6, align="right",
                               downloadButton(outputId=paste0(id_onglet, "_dl_poste"), 
                                              label="Enregistrer la table sur le poste local") 
-                       ),
-                       column(6, align="left",
-                              shinySaveButton(id=paste0(id_onglet, "_dl_cerise"),
-                                              label="Enregistrer la table sur CERISE", 
-                                              title="Enregistrer sous", 
-                                              filetype=list('hidden_mime_type'=c("")))
                        )
                      )
     )
