@@ -18,34 +18,6 @@ ui <- dashboardPage(
       tags$div(class = "utilisateur", Sys.info()["user"])
     ),
     
-    # Aide
-    dropdownMenu(
-      type = "notifications",
-      icon = icon("question-circle"),
-      badgeStatus = NULL,
-      headerText = "Aide :",
-      # Aide Wiki-CERISE
-      notificationItem(
-        icon = icon("arrow-circle-right", class = "fas fa-arrow-circle-right"),
-        actionButton(
-          inputId = "cerise",
-          label = "Wiki-CERISE",
-          icon = NULL,
-          onclick = "window.open('https://orion.agriculture/confluence/display/CER/Cerise+-+Espace+Utilisateurs', '_blank')")
-      ),
-      
-      # Aide mail Assistance DEMESIS
-      notificationItem(
-        icon = icon("envelope", class = "far fa-envelope"),
-        actionButton(
-          inputId = "bmis",
-          label = "Assistance DEMESIS",
-          icon = NULL,
-          onclick = mail_assist
-        )
-      )
-    ),
-    
     # Fonction javascript pour fermer la fenêtre lors du click sur le bouton quitter
     tags$li(
       class = "dropdown",
