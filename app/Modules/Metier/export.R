@@ -22,7 +22,7 @@ ui_export <- function(id_onglet){
                      fluidRow(
                        selectInput(inputId=paste0(id_onglet, "_format_fichier"),
                                    label="Enregistrer au format",
-                                   choices=c("RDS", "csv", "xls", "xlsx", "ods", "parquet"), selected="RDS")
+                                   choices=c("rds", "csv", "xls", "xlsx", "ods", "parquet"), selected="rds")
                      ),
                      
                      # Paramètres spécifiques au format CSV
@@ -84,7 +84,7 @@ ui_export <- function(id_onglet){
 
 # Enregistrement du fichier
 enreg_fichier <- function(file){
-  if (input[[paste0(id_onglet, "_format_fichier")]] == "RDS"){
+  if (input[[paste0(id_onglet, "_format_fichier")]] == "rds"){
     saveRDS(get(input[[paste0(id_onglet, "_env_df")]]), file)
   } else if (input[[paste0(id_onglet, "_format_fichier")]] == "xls" |
              input[[paste0(id_onglet, "_format_fichier")]] == "xlsx"){
@@ -118,7 +118,7 @@ dl_poste <- function(id_onglet, input){
       # On trace l'utilisation de l'onglet
       ecrire_log(id_onglet)
       
-      if (input[[paste0(id_onglet, "_format_fichier")]] == "RDS"){
+      if (input[[paste0(id_onglet, "_format_fichier")]] == "rds"){
         saveRDS(get(input[[paste0(id_onglet, "_env_df")]]), file)
       } else if (input[[paste0(id_onglet, "_format_fichier")]] == "xls" |
                  input[[paste0(id_onglet, "_format_fichier")]] == "xlsx"){
@@ -127,6 +127,8 @@ dl_poste <- function(id_onglet, input){
       } else if (input[[paste0(id_onglet, "_format_fichier")]] == "ods"){
         write_ods(get(input[[paste0(id_onglet, "_env_df")]]), file, sheet="Sheet1",  
                   col_names=T, row_names=F, append=FALSE)
+      } else if (input[[paste0(id_onglet, "_format_fichier")]] == "parquet"){
+        arrow::write_parquet(get(input[[paste0(id_onglet, "_env_df")]]), sink = file)
       } else if (input[[paste0(id_onglet, "_format_fichier")]] == "csv"){
         write.table(x=get(input[[paste0(id_onglet, "_env_df")]]), file=file, append=F, 
                     quote=input[[paste0(id_onglet, "_fic_quote")]],
