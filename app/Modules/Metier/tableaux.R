@@ -117,9 +117,9 @@ ui_tableaux <- function(id_onglet){
                          
                          fluidRow(
                            
-                           # Bouton pour enregistrer sur Cerise
+                           # Bouton pour enregistrer une table
                            column(12, align="center",
-                                  shinySaveButton(id=paste0(id_onglet, "_dl_cerise"),
+                                  shinySaveButton(id=paste0(id_onglet, "_dl_table"),
                                                   label="Enregistrer la table", 
                                                   title="Enregistrer sous", 
                                                   filetype=list('hidden_mime_type'=c("")))
@@ -415,15 +415,15 @@ tableaux_generer_syntaxe <- function(id_onglet, input, output, session){
 }
 
 
-dl_cerise_tab <- function(id_onglet, input, output, session){
+dl_tab <- function(id_onglet, input, output, session){
   
-  observeEvent(input[[paste0(id_onglet, "_dl_cerise")]],{
+  observeEvent(input[[paste0(id_onglet, "_dl_table")]],{
     
     # On trace l'utilisation de l'onglet
     ecrire_log(id_onglet)
     
     # On récupère le chemin et le nom du fichier indiqué par l'utilisateur
-    fileinfo <- parseSavePath(roots=rep_racine, input[[paste0(id_onglet, "_dl_cerise")]])
+    fileinfo <- parseSavePath(roots=rep_racine, input[[paste0(id_onglet, "_dl_table")]])
     
     if (length(normalizePath(fileinfo$datapath, winslash = "/")) != 0) { 
       
