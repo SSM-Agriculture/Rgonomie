@@ -11,9 +11,9 @@ server <- function(input, output, session){
   
   # Bouton téléchargement historique
   
-  shinyFileSave(input, "telecharger_histo", root = adr_cerise) # Initialisation du bouton parcourir dans Cerise
+  shinyFileSave(input, "telecharger_histo", root = rep_racine) # Initialisation du bouton parcourir dans Cerise
   observeEvent(input$telecharger_histo,{
-    fileinfo <- parseSavePath(roots=adr_cerise, input$telecharger_histo)
+    fileinfo <- parseSavePath(roots=rep_racine, input$telecharger_histo)
     if (length(fileinfo$datapath) != 0) { 
       write_lines(x = read_lines("Suivi_Utilisateurs/historique.log"), 
                   file = fileinfo$datapath, append = T)
@@ -22,7 +22,7 @@ server <- function(input, output, session){
   
   ## Fonctionnalités spécifiques
   # Import
-  shinyFileChoose(input, "import_cerise", root = adr_cerise,
+  shinyFileChoose(input, "import_cerise", root = rep_racine,
                   filetypes=c("csv","txt","sas7bdat","sav","rdata", "rds", "xls", "xlsx", "ods","parquet")) # Initialisation du bouton parcourir dans Cerise
   table_existe("import", input, output, session) # Indique si la table résultat existe déjà
   import_fichier_selec("import", input, output, session) # Afficher le bloc de validation
@@ -30,7 +30,7 @@ server <- function(input, output, session){
   import_valider("import", input, output, session) # Ouvrir le fichier et générer la syntaxe
   
   # Export
-  shinyFileSave(input, "export_dl_cerise", root = adr_cerise) # Initialisation du bouton parcourir dans Cerise
+  shinyFileSave(input, "export_dl_cerise", root = rep_racine) # Initialisation du bouton parcourir dans Cerise
   output$export_dl_poste <- dl_poste("export", input) # Enregistrement sur le poste
   
   # Visualiseur
@@ -94,6 +94,6 @@ server <- function(input, output, session){
   table_existe("tableaux", input, output, session) # Indique si la table résultat existe déjà
   tableaux_generer_syntaxe("tableaux", input, output, session) # génération et exécution de la syntaxe
   output$tableaux_dl_poste <- dl_poste("tableaux", input) # Enregistrement sur le poste
-  shinyFileSave(input, "tableaux_dl_cerise", root = adr_cerise) # Initialisation du bouton parcourir dans Cerise
+  shinyFileSave(input, "tableaux_dl_cerise", root = rep_racine) # Initialisation du bouton parcourir dans Cerise
   dl_cerise_tab("tableaux", input, output, session) # Enregistrement sur CERISE
 }

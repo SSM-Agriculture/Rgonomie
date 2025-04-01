@@ -1,3 +1,6 @@
+##### Racine des repertoires #####
+rep_racine <- path.expand("~")
+
 ##### Liste des onglets (un par fonctionnalité) #####
 onglets <- data.frame(libelle=c("Importer une table",
                                 "Exporter une table",

@@ -120,7 +120,7 @@ ui_tableaux <- function(id_onglet){
                            # Bouton pour enregistrer sur Cerise
                            column(12, align="center",
                                   shinySaveButton(id=paste0(id_onglet, "_dl_cerise"),
-                                                  label="Enregistrer sur CERISE", 
+                                                  label="Enregistrer la table", 
                                                   title="Enregistrer sous", 
                                                   filetype=list('hidden_mime_type'=c("")))
                            )
