@@ -425,15 +425,15 @@ dl_cerise_tab <- function(id_onglet, input, output, session){
     # On récupère le chemin et le nom du fichier indiqué par l'utilisateur
     fileinfo <- parseSavePath(roots=rep_racine, input[[paste0(id_onglet, "_dl_cerise")]])
     
-    if (length(fileinfo$datapath) != 0) { 
+    if (length(normalizePath(fileinfo$datapath, winslash = "/")) != 0) { 
       
       # Si le nom du fichier ne se termine pas par l'extension choisie, on la rajoute
-      if (substr(fileinfo$datapath, nchar(fileinfo$datapath)-3, nchar(fileinfo$datapath)) != ".xlsx"){
-        fileinfo$datapath <- paste(fileinfo$datapath, "xlsx", sep=".")
+      if (substr(normalizePath(fileinfo$datapath, winslash = "/"), nchar(normalizePath(fileinfo$datapath, winslash = "/"))-3, nchar(normalizePath(fileinfo$datapath, winslash = "/"))) != ".xlsx"){
+        fileinfo$datapath <- paste(normalizePath(fileinfo$datapath, winslash = "/"), "xlsx", sep=".")
       }
       tab <- eval(parse(text=vec_commande))
       tab_dl <- as.matrix(tab)
-      write.xlsx(tab_dl, fileinfo$datapath, col.names = F, row.names = F)
+      write.xlsx(tab_dl, normalizePath(fileinfo$datapath, winslash = "/"), col.names = F, row.names = F)
       
     }
     

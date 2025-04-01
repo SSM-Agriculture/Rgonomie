@@ -111,7 +111,7 @@ import_fichier_selec <- function(id_onglet, input, output, session){
     { 
       # On récupère le fichier depuis le poste
       fichier <- input[[paste0(id_onglet, "_poste")]]
-      chemin_fichier <<- as.character(fichier$datapath)
+      chemin_fichier <<- as.character(normalizePath(fichier$datapath, winslash = "/"))
       output[[paste0(id_onglet, "_nom_fic")]] <- renderText(as.character(fichier$name))
       
       # On bloque le traitement tant que le fichier n'est pas chargé
@@ -265,7 +265,7 @@ import_nom_colonnes <- function(id_onglet, input, output, session){
     
     # On récupère le fichier depuis le poste
     fichier <<- input[[paste0(id_onglet, "_poste")]]
-    chemin_fichier <<- as.character(fichier$datapath)
+    chemin_fichier <<- as.character(normalizePath(fichier$datapath, winslash = "/"))
     
     # On repère l'extension
     extension <<- tolower(strsplit(chemin_fichier,"\\.")[[1]][length(strsplit(chemin_fichier,"\\.")[[1]])])
@@ -431,7 +431,7 @@ import_valider <- function(id_onglet, input, output, session){
         col_types <- paste(col_types, collapse = ", ")
         # La commande générée
         #commande <- paste0('read_excel(path="', chemin_fichier, '", col_types=c(', col_types, '))')
-        commande <- paste0('read_excel(path="', chemin_fichier, '", col_types=c(', col_types, ')) %>% rename_with(~ gsub("-", "_", .))')
+        commande <- paste0('read_excel(path="', normalizePath(chemin_fichier, winslash = "/"), '", col_types=c(', col_types, ')) %>% rename_with(~ gsub("-", "_", .))')
        
       } else if (extension == "ods"){
         # On lit la première ligne de la table pour récupérer les noms de colonnes
@@ -453,7 +453,7 @@ import_valider <- function(id_onglet, input, output, session){
         col_types <- paste(col_types, collapse = ", ")
         # La commande générée
         #commande <- paste0('read_ods(path="', chemin_fichier, '", col_types=cols(', col_types, '))')
-        commande <- paste0('read_ods(path="', chemin_fichier, '", col_types=cols(', col_types, ')) %>% rename_with(~ gsub("-", "_", .))')
+        commande <- paste0('read_ods(path="', normalizePath(chemin_fichier, winslash = "/"), '", col_types=cols(', col_types, ')) %>% rename_with(~ gsub("-", "_", .))')
         # Fichiers csv
       } else if (extension %in% c("csv", "txt")){
         # On lit toute la table pour récupérer les noms de colonnes ainsi que les types détéctés automatiquement

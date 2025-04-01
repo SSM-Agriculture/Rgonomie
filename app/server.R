@@ -14,9 +14,9 @@ server <- function(input, output, session){
   shinyFileSave(input, "telecharger_histo", root = rep_racine) # Initialisation du bouton parcourir dans Cerise
   observeEvent(input$telecharger_histo,{
     fileinfo <- parseSavePath(roots=rep_racine, input$telecharger_histo)
-    if (length(fileinfo$datapath) != 0) { 
+    if (length(normalizePath(fileinfo$datapath, winslash = "/")) != 0) { 
       write_lines(x = read_lines("Suivi_Utilisateurs/historique.log"), 
-                  file = fileinfo$datapath, append = T)
+                  file = normalizePath(fileinfo$datapath, winslash = "/"), append = T)
     }
   })
   
