@@ -1,9 +1,9 @@
-Rgonomie
+Rgonomie <img src="app/www/logo_rgonomie_transparent.png" width=110 align="right"/>
 ======================================
 
 Ce projet héberge le code source de l'application Shiny Rgonomie du [MASA](https://agreste.agriculture.gouv.fr/agreste-web/).
 
-Rgonomie est disponible en ligne : [A VENIR]
+Rgonomie est disponible en ligne : [URL à venir...]
 
 ## Objectif
 

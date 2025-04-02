@@ -43,6 +43,11 @@ ui <- dashboardPage(
   ##### Sélection des fonctionnalités #####
   
   dashboardSidebar(
+    
+    div(tags$img(src='logo_rgonomie.png',width = 130, height = 130),
+        # On centre le logo et on ajoute des marges en haut et en bas
+        style="text-align: center; margin: 10px 10px;"),
+    
     sidebarMenu(
       id = "menu",
       tags$head(

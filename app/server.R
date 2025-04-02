@@ -15,6 +15,7 @@ server <- function(input, output, session){
           "</strong>"
         )
       ),
+      imageUrl = "logo_rgonomie_transparent.png",
       html = TRUE,
       size = "m",
       # imageUrl = "app/www/logo.png",
