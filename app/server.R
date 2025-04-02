@@ -1,5 +1,31 @@
 server <- function(input, output, session){
   
+  # Affichage du pop-up de bienvenue lors du premier chargement de l'application
+  observe({
+    shinyalert(
+      title = "Bienvenue dans Rgonomie !",
+      text =HTML(
+        paste(
+          "Cette application en ligne permet aux utilisateurs novices en R",
+          "d'utiliser ce langage via une interface graphique pour exploiter des",
+          "fichiers de données et réaliser des traitements statistiques de base.",
+          "<br><br>",  
+          "<strong>", 
+          "<a href='https://github.com/SSM-Agriculture/Rgonomie' target='_blank'>Voir le code sur GitHub</a>",
+          "</strong>"
+        )
+      ),
+      html = TRUE,
+      size = "m",
+      # imageUrl = "app/www/logo.png",
+      showCancelButton = FALSE,
+      showConfirmButton = TRUE,
+      closeOnClickOutside = TRUE,
+      confirmButtonCol = "#008000",
+      confirmButtonText = "C'est parti 🚀"
+    )
+  })
+  
   ### Ligne de code qui permet de stopper l'app Shiny automatiquement qd on ferme la fenetre de l'app
   session$onSessionEnded(stopApp)
   

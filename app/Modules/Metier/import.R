@@ -7,9 +7,9 @@ ui_import <- function(id_onglet){
     useShinyjs(),
     fluidRow(
       add_busy_spinner(spin = "fulfilling-square",
-                       color = "#3c8dbc",
+                       color = "#008000",
                        position = "top-left",
-                       margins = c("60%","50%")
+                       margins = c("50%","50%")
       ),
       column(12, align="center",
              titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle))

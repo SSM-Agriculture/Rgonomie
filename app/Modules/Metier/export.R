@@ -64,7 +64,7 @@ ui_export <- function(id_onglet){
                      
                      fluidRow(
                        add_busy_spinner(spin = "fulfilling-square",
-                                        color = "#3c8dbc",
+                                        color = "#008000",
                                         position = "top-left",
                                         margins = c("60%","50%")
                        ),

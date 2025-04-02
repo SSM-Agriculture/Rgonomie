@@ -1,5 +1,7 @@
 ui <- dashboardPage(
   
+  skin = "green",
+  
   ##### En-tête #####
   dashboardHeader(
     title = "Rgonomie",
