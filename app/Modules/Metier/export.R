@@ -82,27 +82,6 @@ ui_export <- function(id_onglet){
 
 ##### Server de l'export #####
 
-# Enregistrement du fichier
-enreg_fichier <- function(file){
-  if (input[[paste0(id_onglet, "_format_fichier")]] == "rds"){
-    saveRDS(get(input[[paste0(id_onglet, "_env_df")]]), file)
-  } else if (input[[paste0(id_onglet, "_format_fichier")]] == "xls" |
-             input[[paste0(id_onglet, "_format_fichier")]] == "xlsx"){
-    write.xlsx(as.data.frame(get(input[[paste0(id_onglet, "_env_df")]])), file, 
-               sheetName="Sheet1", showNA=F, col.names=T, row.names=F, append=FALSE)
-  } else if (input[[paste0(id_onglet, "_format_fichier")]] == "ods"){
-    write_ods(get(input[[paste0(id_onglet, "_env_df")]]), file, sheet="Sheet1",  
-              col_names=T, row_names=F, append=FALSE) 
-  } else if (input[[paste0(id_onglet, "_format_fichier")]] == "csv"){
-    write.table(x=get(input[[paste0(id_onglet, "_env_df")]]), file=file, append=F, 
-                quote=input[[paste0(id_onglet, "_fic_quote")]],
-                sep=input[[paste0(id_onglet, "_fic_sep")]],
-                dec=input[[paste0(id_onglet, "_fic_dec")]],
-                fileEncoding=input[[paste0(id_onglet, "_fic_encodage")]],
-                na="", row.names = F, col.names = T)
-  }
-}
-
 # Activation du télechargement sur le poste
 dl_poste <- function(id_onglet, input){
   downloadHandler(
@@ -128,7 +107,7 @@ dl_poste <- function(id_onglet, input){
         write_ods(get(input[[paste0(id_onglet, "_env_df")]]), file, sheet="Sheet1",  
                   col_names=T, row_names=F, append=FALSE)
       } else if (input[[paste0(id_onglet, "_format_fichier")]] == "parquet"){
-        arrow::write_parquet(get(input[[paste0(id_onglet, "_env_df")]]), sink = file)
+        arrow::write_parquet(get(input[[paste0(id_onglet, "_env_df")]]), file)
       } else if (input[[paste0(id_onglet, "_format_fichier")]] == "csv"){
         write.table(x=get(input[[paste0(id_onglet, "_env_df")]]), file=file, append=F, 
                     quote=input[[paste0(id_onglet, "_fic_quote")]],
