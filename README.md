@@ -1,7 +1,7 @@
 Rgonomie
 ======================================
 
-Ce projet héberge le code source de l'application Shiny Rgonomie.
+Ce projet héberge le code source de l'application Shiny Rgonomie du [MASA](https://agreste.agriculture.gouv.fr/agreste-web/).
 
 Rgonomie est disponible en ligne : [A VENIR]
 
@@ -14,8 +14,3 @@ et réaliser des **traitements statistiques de base**.
 ## Contributions
 
 Si vous constatez des bugs, merci d'ouvrir une [issue](https://github.com/SSM-Agriculture/Rgonomie/issues) ou une [Pull Request](https://github.com/SSM-Agriculture/Rgonomie/pulls).
-
-## Internationalisation
-
-Si vous souhaitez que cette application soit disponible dans d'autres langages, faites-le 
-nous savoir à travers une [issue](https://github.com/SSM-Agriculture/Rgonomie/issues).
