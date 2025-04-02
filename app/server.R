@@ -58,7 +58,7 @@ server <- function(input, output, session){
   ## Fonctionnalités spécifiques
   # Import
   shinyFileChoose(input, "import_cerise", root = rep_racine,
-                  filetypes=c("csv","txt","sas7bdat","sav","rdata", "rds", "xls", "xlsx", "ods","parquet")) # Initialisation du bouton parcourir dans Cerise
+                  filetypes=c("csv","txt","sas7bdat","sav","rdata", "rds", "xls", "xlsx", "ods","parquet")) # Initialisation du bouton parcourir
   table_existe("import", input, output, session) # Indique si la table résultat existe déjà
   import_fichier_selec("import", input, output, session) # Afficher le bloc de validation
   import_nom_colonnes("import", input, output, session) # Lire les noms de colonnes et afficher le choix des types de colonnes
@@ -130,5 +130,5 @@ server <- function(input, output, session){
   tableaux_generer_syntaxe("tableaux", input, output, session) # génération et exécution de la syntaxe
   output$tableaux_dl_poste <- dl_poste("tableaux", input) # Enregistrement sur le poste
   shinyFileSave(input, "tableaux_dl_table", root = rep_racine) # Initialisation du bouton parcourir
-  dl_tab("tableaux", input, output, session) # Enregistrement sur CERISE
+  dl_tab("tableaux", input, output, session) # Enregistrement du tableau
 }
