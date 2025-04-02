@@ -166,7 +166,6 @@ fusion_generer_syntaxe <- function(id_onglet, input, output, session){
       }
     }
     
-    print(commande)
     # On valide la commande
     if (commande != ""){
       server_validation("fusion", commande, input, output, session)

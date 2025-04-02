@@ -333,7 +333,6 @@ import_nom_colonnes <- function(id_onglet, input, output, session){
           selected_values <- sapply(noms_colonnes, function(colonne) {
             input[[paste0(id_onglet, "_", colonne)]]
           })
-          #print(selected_values)
           date_col <- names(selected_values)[selected_values == "date"]
           
         })
@@ -394,7 +393,6 @@ import_valider <- function(id_onglet, input, output, session){
         if (extension == "rds"){
           #commande <- paste0("readRDS('", chemin_fichier,"')")
           commande <- paste0("readRDS('", chemin_fichier,"') %>% rename_with(~ gsub('-', '_', .))")
-          #print(commande)
         } else if (extension == "sav"){
           #commande <- paste0("read_spss('", chemin_fichier,"')")
           commande <- paste0("read_spss('", chemin_fichier,"') %>% rename_with(~ gsub('-', '_', .))")
@@ -480,8 +478,6 @@ import_valider <- function(id_onglet, input, output, session){
           input[[paste0(id_onglet, "_", colonne)]]
         })
         
-        #print(types_manuels)
-        
         # Si aucun type n'a été modifié
         if (all(types_manuels == types_auto)){
           # Pas besoin de renseigner le paramètre colClasses
@@ -509,7 +505,6 @@ import_valider <- function(id_onglet, input, output, session){
                            '"', col_types,
                            ', comment.char=',paste0('"',input[[paste0(id_onglet, "_fic_carcom")]],'"'),') %>% rename_with(~ gsub("-", "_", .))')
       }
-      #print(commande)
       tryCatch({
         # La commande à exécuter
         commande_executee <- paste0("assign('", table_sortie, "', ", commande, ", envir=.GlobalEnv) ")

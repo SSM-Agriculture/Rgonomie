@@ -108,11 +108,9 @@ filtre_ligne_type_col <- function(id_onglet, input, output, session){
        type_var <- get(input[[paste0(id_onglet, "_env_df")]]) %>% 
          pull(input[[paste0(id_onglet, "_choix_col")]]) %>% class()
 
-      #print(type_var)
       # récupérer que la premiere valeur cas des dates "POSIXct" "POSIXt" 
       type_var <- type_var[[1]]
       
-      #print(type_var)
       # Gestion du type date POSIXct    
       if (type_var == "POSIXct") {
 

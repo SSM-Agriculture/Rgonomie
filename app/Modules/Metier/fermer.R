@@ -67,16 +67,9 @@ fermer_server <- function(id_onglet, input, output, session){
       # Convertir les colonnes de date si nécessaire
       for (col in names(ma_table)) {
         if (grepl("Date", col)) {
-          #print("cest une date")
           ma_table[[col]] <- as.Date(ma_table[[col]], format = "%Y-%m-%d %H:%M:%S")
         }
       }
-      
-      # On affiche les informations sur les variables (colonnes)
-      # infos_var <- data.frame(Nom = names(ma_table),
-      #                         Type = sapply(ma_table, class),
-      #                         TailleMax = lapply(ma_table %>% mutate_all(as.character), nchar) %>% 
-      #                           as.data.frame() %>% summarise_all(max,na.rm=T) %>% t()) %>% ungroup()
       
 
       noms_colonnes <- names(ma_table)

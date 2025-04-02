@@ -63,7 +63,6 @@ visu_server <- function(id_onglet, input, output, session){
       
       # La table en entrée
       ma_table <- get(input[[paste0(id_onglet, "_env_df")]])
-      #print(ma_table)
       # Convertir les colonnes de date si nécessaire
       for (col in names(ma_table)) {
         #if (is.DateTime(col)) {
@@ -72,7 +71,6 @@ visu_server <- function(id_onglet, input, output, session){
         }
       }
       
-      #print(ma_table)
       # On affiche les informations sur les variables (colonnes)
        # infos_var <- data.frame(Nom = names(ma_table),
        #                         Type = sapply(ma_table, class),
@@ -81,7 +79,6 @@ visu_server <- function(id_onglet, input, output, session){
       
       noms_colonnes <- names(ma_table)
       types_colonnes <- sapply(ma_table, class)
-      #print(types_colonnes)
       taille_max <- sapply(ma_table, function(col) {
         if (is.DateTime(col)) {
           max(nchar(as.character(col)), na.rm = TRUE)
