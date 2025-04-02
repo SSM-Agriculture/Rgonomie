@@ -1,5 +1,8 @@
 server <- function(input, output, session){
   
+  ### Ligne de code qui permet de stopper l'app Shiny automatiquement qd on ferme la fenetre de l'app
+  session$onSessionEnded(stopApp)
+  
   # Bouton quitter
   observeEvent(input$quitter, {
     # On ferme la fenêtre
