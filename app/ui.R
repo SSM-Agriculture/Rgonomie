@@ -55,16 +55,7 @@ ui <- dashboardPage(
       
       lapply(1:nrow(onglets), function(i){
         menuItem(text = onglets[i,"libelle"],tabName = onglets[i, "id"])
-      }),
-      
-      # Bouton de téléchargement de l'historique
-      menuItem(
-        shinySaveButton(id="telecharger_histo",
-                        label="Historique des commandes", 
-                        title="Enregistrer sous", 
-                        filetype=list(R="R"))
-        
-      )
+      })
     )
   ),
   
