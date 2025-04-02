@@ -6,13 +6,22 @@ server <- function(input, output, session){
       title = "Bienvenue dans Rgonomie !",
       text =HTML(
         paste(
-          "Cette application en ligne permet aux utilisateurs novices en R",
-          "d'utiliser ce langage via une interface graphique pour exploiter des",
-          "fichiers de données et réaliser des traitements statistiques de base.",
-          "<br><br>",  
           "<strong>", 
           "<a href='https://github.com/SSM-Agriculture/Rgonomie' target='_blank'>Voir le code sur GitHub</a>",
-          "</strong>"
+          "</strong>",
+          "<br><br>",  
+          "Cette application en ligne permet aux utilisateurs novices en R",
+          "d'utiliser ce langage ",
+          "<strong>",
+          "via une interface graphique ",
+          "</strong>",
+          "pour exploiter des fichiers de données et ",
+          "<strong>",
+          "réaliser des traitements statistiques de base.",
+          "</strong>",
+          "<br><br>",  
+          actionBttn("consulter_a_propos", "À propos de l'application", 
+                     size = "xs", icon = icon("book-open"))
         )
       ),
       imageUrl = "logo_rgonomie_transparent.png",
@@ -23,8 +32,15 @@ server <- function(input, output, session){
       showConfirmButton = TRUE,
       closeOnClickOutside = TRUE,
       confirmButtonCol = "#008000",
-      confirmButtonText = "C'est parti 🚀"
+      confirmButtonText = "C'est parti ! 🚀"
     )
+  })
+  
+  # Pour basculer sur l'onglet à propos depuis la fenêtre d'accueil
+  observeEvent(input$consulter_a_propos, {
+    updateTabItems(session,
+                   inputId = "menu",
+                   selected = "propos")
   })
   
   ### Ligne de code qui permet de stopper l'app Shiny automatiquement qd on ferme la fenetre de l'app
