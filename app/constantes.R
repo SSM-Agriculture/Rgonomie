@@ -14,7 +14,8 @@ onglets <- data.frame(libelle=c("Importer une table",
                                 "Agréger une table",
                                 "Fusionner des tables",
                                 "Réaliser des tableaux",
-                                "Fermer des tables"),
+                                "Fermer des tables",
+                                "À propos"),
                       id=c("import",
                            "export",
                            "visu",
@@ -27,7 +28,8 @@ onglets <- data.frame(libelle=c("Importer une table",
                            "agreg",
                            "fusion",
                            "tableaux",
-                           "fermer")
+                           "fermer",
+                           "propos")
 )
 
 
