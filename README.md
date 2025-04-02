@@ -7,9 +7,13 @@ Rgonomie est disponible en ligne : https://agreste.shinyapps.io/Rgonomie/
 
 ## Objectif
 
-Le but de cette application est de permettre à un utilisateur d'utiliser le 
-langage R via une interface graphique pour exploiter des fichiers de données 
-et réaliser des **traitements statistiques de base**.
+Cette application a été développé au sein du Service de la Statistique et de la Prospective (SSP) du [Ministère de l'Agriculture et de la Souveraineté Alimentaire](https://agriculture.gouv.fr/).
+
+Son objectif est de permettre aux utilisateur d'utiliser [le langage R](https://www.r-project.org/) via une interface graphique pour exploiter des fichiers de données et réaliser des traitements statistiques de base.
+
+Pour des traitements statistiques plus avancées ou des manipulations de données plus complexes, il est recommandé d'utiliser le langage R via un environnement de développement intégré comme [RStudio](https://posit.co/download/rstudio-desktop/) ou [VSCode](https://code.visualstudio.com/).
+
+Les utilisateurs qui désirent se former peuvent consulter par exemple [sur ce site](https://ssm-agriculture.github.io/site-formations-R/). 
 
 ## Mode d'emploi
 
