@@ -21,7 +21,7 @@ server <- function(input, output, session){
           "</strong>",
           "<br><br>",  
           actionBttn("consulter_a_propos", "À propos de l'application", 
-                     size = "xs", icon = icon("book-open"))
+                     icon = icon("book-open"))
         )
       ),
       imageUrl = "logo_rgonomie_transparent.png",
