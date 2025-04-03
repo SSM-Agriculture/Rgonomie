@@ -2,9 +2,61 @@
   "cultural_date_format": "%d-%m-%Y",
   "languages": ["fr", "en"],
   "translation": [
-      {
-        "fr": "Importer une table", 
-        "en": "Import table"
-      }
-    ]
+    {
+      "fr": "Importer une table",
+      "en": "Import table"
+    },
+    {
+      "fr": "Exporter une table",
+      "en": "Export table"
+    },
+    {
+      "fr": "Visualiser une table",
+      "en": "View table"
+    },
+    {
+      "fr": "Trier une table",
+      "en": "Sort table"
+    },
+    {
+      "fr": "Filtrer les lignes",
+      "en": "Filter rows"
+    },
+    {
+      "fr": "Remplacer des valeurs",
+      "en": "Replace values"
+    },
+    {
+      "fr": "Sélectionner des colonnes",
+      "en": "Select columns"
+    },
+    {
+      "fr": "Transposer une table",
+      "en": "Transpose table"
+    },
+    {
+      "fr": "Calculer une colonne",
+      "en": "Compute column"
+    },
+    {
+      "fr": "Agréger une table",
+      "en": "Aggregate table"
+    },
+    {
+      "fr": "Fusionner des tables",
+      "en": "Merge tables"
+    },
+    {
+      "fr": "Réaliser des tableaux",
+      "en": "Create tables"
+    },
+    {
+      "fr": "Fermer des tables",
+      "en": "Close tables"
+    },
+    {
+      "fr": "À propos",
+      "en": "About"
+    }
+  ]
 }
