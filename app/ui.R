@@ -53,7 +53,7 @@ ui <- dashboardPage(
                   "",
                   choices = setNames(
                     i18n$get_languages(),
-                    c("🇫🇷 - Français","🇬🇧 - English") # Set labels for the languages
+                    c("🇫🇷 - Français","🇬🇧  / 🇺🇸- English") # Set labels for the languages
                   ),
                   selected = i18n$get_languages()[1])
     ),
