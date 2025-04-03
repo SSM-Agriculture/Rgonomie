@@ -4,19 +4,19 @@
   "translation": [
     {
       "fr": "Importer une table",
-      "en": "Import table"
+      "en": "Import a table"
     },
     {
       "fr": "Exporter une table",
-      "en": "Export table"
+      "en": "Export a table"
     },
     {
       "fr": "Visualiser une table",
-      "en": "View table"
+      "en": "View a table"
     },
     {
       "fr": "Trier une table",
-      "en": "Sort table"
+      "en": "Sort a table"
     },
     {
       "fr": "Filtrer les lignes",
@@ -32,15 +32,15 @@
     },
     {
       "fr": "Transposer une table",
-      "en": "Transpose table"
+      "en": "Transpose a table"
     },
     {
       "fr": "Calculer une colonne",
-      "en": "Compute column"
+      "en": "Calculate a column"
     },
     {
       "fr": "Agréger une table",
-      "en": "Aggregate table"
+      "en": "Aggregate a table"
     },
     {
       "fr": "Fusionner des tables",
