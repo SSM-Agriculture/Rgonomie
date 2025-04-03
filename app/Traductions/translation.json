@@ -1,0 +1,10 @@
+{
+  "cultural_date_format": "%d-%m-%Y",
+  "languages": ["fr", "en"],
+  "translation": [
+      {
+        "fr": "Importer une table", 
+        "en": "Import table"
+      }
+    ]
+}

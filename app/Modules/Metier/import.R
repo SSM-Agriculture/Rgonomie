@@ -12,7 +12,7 @@ ui_import <- function(id_onglet){
                        margins = c("50%","50%")
       ),
       column(12, align="center",
-             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle))
+             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle) %>% i18n$t())
       )
     ),
     

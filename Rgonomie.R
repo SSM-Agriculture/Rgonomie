@@ -10,7 +10,9 @@ library(shinydashboard)
 library(shinyjs)
 library(shinyWidgets)
 library(shinyFiles)
+library(shinyalert)
 library(shinybusy)
+library(shiny.i18n)
 library(haven)
 library(dplyr)
 library(stats)
@@ -27,6 +29,10 @@ library(stringr)
 library(lubridate)
 library(arrow)
 
+
+# Charger le fichier de traduction
+i18n <- Translator$new(translation_json_path = "app/Traductions/translation.json")
+i18n$set_translation_language("fr")
 
 ##### Lancement application #####
 

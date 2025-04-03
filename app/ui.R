@@ -48,6 +48,16 @@ ui <- dashboardPage(
         # On centre le logo et on ajoute des marges en haut et en bas
         style="text-align: center; margin: 10px 10px;"),
     
+    div(
+      selectInput('selected_language',
+                  "",
+                  choices = setNames(
+                    i18n$get_languages(),
+                    c("🇫🇷 - Français","🇬🇧 - English") # Set labels for the languages
+                  ),
+                  selected = i18n$get_languages()[1])
+    ),
+    
     sidebarMenu(
       id = "menu",
       tags$head(
@@ -71,6 +81,7 @@ ui <- dashboardPage(
   
   dashboardBody(
     useShinyjs(),
+    shiny.i18n::usei18n(i18n),
     tags$head(
       # Fichier CSS
       tags$link(rel = "stylesheet", type = "text/css", href = "style.css")),

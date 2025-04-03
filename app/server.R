@@ -43,6 +43,13 @@ server <- function(input, output, session){
                    selected = "propos")
   })
   
+  observeEvent(input$selected_language, {
+    # This print is just for demonstration
+    print(paste("Language change!", input$selected_language))
+    # Here is where we update language in session
+    update_lang(input$selected_language)
+  })
+  
   ### Ligne de code qui permet de stopper l'app Shiny automatiquement qd on ferme la fenetre de l'app
   session$onSessionEnded(stopApp)
   
