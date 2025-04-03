@@ -34,7 +34,7 @@ ui_fermer <- function(id_onglet){
             column(2),
             column(8, align="center",
                    actionButton(inputId=paste0(id_onglet, "_fermer_table"),
-                                label="Supprimer la table de votre environnement",
+                                label=i18n$t("Supprimer la table de votre environnement"),
                                 style="background-color : #FF6A74")),
             column(2)
           )

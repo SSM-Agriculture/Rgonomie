@@ -16,12 +16,12 @@ ui_fusion <- function(id_onglet){
     fluidRow(
       column(6, align="left",
              selectInput(inputId=paste0(id_onglet, "_env_df_1"),
-                         label="Sélectionnez la première table",
+                         label=i18n$t("Sélectionnez la première table"),
                          choices=c("", liste_df))
       ),
       column(6, align="right",
              selectInput(inputId=paste0(id_onglet, "_env_df_2"),
-                         label="Sélectionnez la deuxième table",
+                         label=i18n$t("Sélectionnez la deuxième table"),
                          choices=c("", liste_df))
       )
     ),
@@ -31,7 +31,7 @@ ui_fusion <- function(id_onglet){
                      fluidRow(
                        column(6, align="right",
                               selectInput(inputId=paste0(id_onglet, "_mode"),
-                                          label="Type de fusion",
+                                          label=i18n$t("Type de fusion"),
                                           choices=c("Ajouter des lignes" = "lignes",
                                                     "Ajouter des colonnes" = "colonnes"))
                        ),
@@ -52,23 +52,23 @@ ui_fusion <- function(id_onglet){
                                       fluidRow(
                                         column(6, align="left",
                                                selectInput(inputId=paste0(id_onglet, "_by_1"), 
-                                                           label="Choisissez les variables de regroupement de la table 1",
+                                                           label=i18n$t("Choisissez les variables de regroupement de la table 1"),
                                                            choices=c(), multiple=T)
                                         ),
                                         column(6, align="right",
                                                selectInput(inputId=paste0(id_onglet, "_by_2"),
-                                                           label="Choisissez les variables de regroupement de la table 2",
+                                                           label=i18n$t("Choisissez les variables de regroupement de la table 2"),
                                                            choices=c(), multiple=T)
                                         )),
                                       
                                       # Sélection des variables à garder
                                       fluidRow(
                                         column(6, align="left",
-                                               checkboxInput(inputId=paste0(id_onglet, "_all_1"), label="Conserver toutes les lignes du tableau 1",
+                                               checkboxInput(inputId=paste0(id_onglet, "_all_1"), label=i18n$t("Conserver toutes les lignes du tableau 1"),
                                                              value = FALSE)
                                         ),
                                         column(6, align="right",
-                                               checkboxInput(inputId=paste0(id_onglet, "_all_2"), label="Conserver toutes les lignes du tableau 2",
+                                               checkboxInput(inputId=paste0(id_onglet, "_all_2"), label=i18n$t("Conserver toutes les lignes du tableau 2"),
                                                              value = FALSE)
                                         ))
                      ),

@@ -49,14 +49,14 @@ ui_agreg <- function(id_onglet){
                                column(6,
                                       align = "center",
                                       selectInput(inputId=paste0(id_onglet, "_group"), 
-                                                  label="Indiquer les variables de regroupement",
+                                                  label=i18n$t("Indiquer les variables de regroupement"),
                                                   choices=c(),
                                                   multiple=T)
                                ),
                                column(6,
                                       align = "center",
                                       selectInput(inputId=paste0(id_onglet, "_coef"),
-                                                  label="Indiquer le coefficient de pondération",
+                                                  label=i18n$t("Indiquer le coefficient de pondération"),
                                                   choices=c(),
                                                   multiple=F)
                                )
@@ -71,11 +71,11 @@ ui_agreg <- function(id_onglet){
                          fluidRow(
                            column(6, align="right", style="padding:25px",
                                   actionButton(inputId=paste0(id_onglet, "_suppr_form"),
-                                               label="Supprimer les calculs sélectionnés")
+                                               label=i18n$t("Supprimer les calculs sélectionnés"))
                            ),
                            column(6, align="left", style="padding:25px",
                                   actionButton(inputId=paste0(id_onglet, "_add_form"),
-                                               label="Ajouter un calcul")
+                                               label=i18n$t("Ajouter un calcul"))
                            )
                          ),
                          
@@ -101,7 +101,7 @@ agreg_form<- function(id_onglet, liste_col, nb_form){
       fluidRow(
         column(3,
                textInput(inputId=paste0(id_onglet, "_form_nouv", nb_form),
-                         label="Entrez le nom de la nouvelle variable")
+                         label=i18n$t("Entrez le nom de la nouvelle variable"))
         ),
         column(4,
                selectInput(inputId = paste0(id_onglet, "_form_var", nb_form), 
@@ -117,7 +117,7 @@ agreg_form<- function(id_onglet, liste_col, nb_form){
                )
         ),
         column(2, style = "padding:25px;",
-               checkboxInput(inputId=paste0(id_onglet, "_form_check", nb_form), label="Supprimer")
+               checkboxInput(inputId=paste0(id_onglet, "_form_check", nb_form), label=i18n$t("Supprimer"))
         )
       )
   )

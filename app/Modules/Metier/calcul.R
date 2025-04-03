@@ -23,7 +23,7 @@ ui_calcul <- function(id_onglet, input, output, session){
                            column(4,align = "right",
                                   # Nom de la colonne résultat
                                   textInput(inputId=paste0(id_onglet, "_col_resultat"), 
-                                            label="Entrez le nom de la colonne résultat")
+                                            label=i18n$t("Entrez le nom de la colonne résultat"))
                            ),
                            column(1, align="center", style="padding:25px",
                                   HTML('<font size="+2"> = </font>')),
@@ -31,7 +31,7 @@ ui_calcul <- function(id_onglet, input, output, session){
                                   align = "left",
                                   # Commande à saisir
                                   textInput(inputId=paste0(id_onglet, "_commande"),
-                                            label="Commande à appliquer sur la colonne", 
+                                            label=i18n$t("Commande à appliquer sur la colonne"), 
                                             width="100%")
                            )
                          ),
@@ -41,13 +41,13 @@ ui_calcul <- function(id_onglet, input, output, session){
                            column(6,
                                   align = "center",
                                   selectInput(inputId=paste0(id_onglet, "_choix_col"), 
-                                              label="Liste des colonnes",
+                                              label=i18n$t("Liste des colonnes"),
                                               choices=c(), multiple=F)
                            ),
                            column(6,
                                     align = "left", style="padding:25px",
                                     actionButton(inputId=paste0(id_onglet, "_coller"), 
-                                                 label="Coller le nom de la colonne")
+                                                 label=i18n$t("Coller le nom de la colonne"))
                            )
                          ),
                          

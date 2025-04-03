@@ -80,12 +80,12 @@ ui_transpo <- function(id_onglet) {
                            fluidRow(
                              column(6, align="right",
                                     selectInput(inputId=paste0(id_onglet, "_wider_names"),
-                                                label="Choisissez la colonne qui contient les noms des nouvelles colonnes",
+                                                label=i18n$t("Choisissez la colonne qui contient les noms des nouvelles colonnes"),
                                                 choices=c())
                              ),
                              column(6, align="left",
                                     selectInput(inputId=paste0(id_onglet, "_wider_values"),
-                                                label="Choisissez la colonne qui contient les valeur des nouvelles colonnes",
+                                                label=i18n$t("Choisissez la colonne qui contient les valeur des nouvelles colonnes"),
                                                 choices=c())
                              )
                            )
@@ -96,17 +96,17 @@ ui_transpo <- function(id_onglet) {
                            fluidRow(
                              column(6, align="right",
                                     textInput(inputId=paste0(id_onglet, "_longer_names"),
-                                              label="Nom de la nouvelle colonne qui contient les noms")
+                                              label=i18n$t("Nom de la nouvelle colonne qui contient les noms"))
                              ),
                              column(6, align="left",
                                     textInput(inputId=paste0(id_onglet, "_longer_values"),
-                                              label="Nom de la nouvelle colonne qui contient les valeur")
+                                              label=i18n$t("Nom de la nouvelle colonne qui contient les valeurs"))
                              )
                            ),
                            fluidRow(
                              column(12, align="center",
                                     selectInput(inputId=paste0(id_onglet, "_longer_keep"),
-                                                label="Colonnes à conserver",
+                                                label=i18n$t("Colonnes à conserver"),
                                                 choices=c(),
                                                 multiple=T,
                                                 width="100%")

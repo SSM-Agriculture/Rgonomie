@@ -4,19 +4,19 @@
   "translation": [
     {
       "fr": "Importer une table",
-      "en": "Import a table"
+      "en": "Import table"
     },
     {
       "fr": "Exporter une table",
-      "en": "Export a table"
+      "en": "Export table"
     },
     {
       "fr": "Visualiser une table",
-      "en": "View a table"
+      "en": "View table"
     },
     {
       "fr": "Trier une table",
-      "en": "Sort a table"
+      "en": "Sort table"
     },
     {
       "fr": "Filtrer les lignes",
@@ -32,15 +32,15 @@
     },
     {
       "fr": "Transposer une table",
-      "en": "Transpose a table"
+      "en": "Transpose table"
     },
     {
       "fr": "Calculer une colonne",
-      "en": "Calculate a column"
+      "en": "Compute column"
     },
     {
       "fr": "Agréger une table",
-      "en": "Aggregate a table"
+      "en": "Aggregate table"
     },
     {
       "fr": "Fusionner des tables",
@@ -57,6 +57,198 @@
     {
       "fr": "À propos",
       "en": "About"
+    },
+    {
+      "fr": "Choisir un fichier",
+      "en": "Choose a file"
+    },
+    {
+      "fr": "Nom de la table résultat",
+      "en": "Result table name"
+    },
+    {
+      "fr": "Parcourir",
+      "en": "Browse"
+    },
+    {
+      "fr": "Valider",
+      "en": "Validate"
+    },
+    {
+      "fr": "Sélectionnez la table",
+      "en": "Select the table"
+    },
+    {
+      "fr": "Enregistrer la table sur le poste local",
+      "en": "Save the table on the local machine"
+    },
+    {
+      "fr": "Enregistrer au format",
+      "en": "Save as format"
+    },
+    {
+      "fr": "Indiquer les variables de regroupement",
+      "en": "Specify grouping variables"
+    },
+    {
+      "fr": "Indiquer le coefficient de pondération",
+      "en": "Specify weighting coefficient"
+    },
+    {
+      "fr": "Supprimer les calculs sélectionnés",
+      "en": "Delete selected calculations"
+    },
+    {
+      "fr": "Ajouter un calcul",
+      "en": "Add a calculation"
+    },
+    {
+      "fr": "Entrez le nom de la nouvelle variable",
+      "en": "Enter the name of the new variable"
+    },
+    {
+      "fr": "Supprimer",
+      "en": "Delete"
+    },
+    {
+      "fr": "Entrez le nom de la colonne résultat",
+      "en": "Enter the result column name"
+    },
+    {
+      "fr": "Commande à appliquer sur la colonne",
+      "en": "Command to apply to the column"
+    },
+    {
+      "fr": "Liste des colonnes",
+      "en": "List of columns"
+    },
+    {
+      "fr": "Coller le nom de la colonne",
+      "en": "Paste the column name"
+    },
+    {
+      "fr": "Encodage",
+      "en": "Encoding"
+    },
+    {
+      "fr": "Le fichier contient les noms de colonne",
+      "en": "The file contains column names"
+    },
+    {
+      "fr": "Séparateur de champ",
+      "en": "Field separator"
+    },
+    {
+      "fr": "Séparateur décimal",
+      "en": "Decimal separator"
+    },
+    {
+      "fr": "Séparateur de texte",
+      "en": "Text separator"
+    },
+    {
+      "fr": "Encadrer par des doubles quotes les chaînes de caractères",
+      "en": "Enclose strings with double quotes"
+    },
+    {
+      "fr": "Supprimer la table de votre environnement",
+      "en": "Remove the table from your environment"
+    },
+    {
+      "fr": "Sélectionnez la première table",
+      "en": "Select the first table"
+    },
+    {
+      "fr": "Sélectionnez la deuxième table",
+      "en": "Select the second table"
+    },
+    {
+      "fr": "Type de fusion",
+      "en": "Type of merge"
+    },
+    {
+      "fr": "Choisissez les variables de regroupement de la table 1",
+      "en": "Choose grouping variables for table 1"
+    },
+    {
+      "fr": "Choisissez les variables de regroupement de la table 2",
+      "en": "Choose grouping variables for table 2"
+    },
+    {
+      "fr": "Conserver toutes les lignes du tableau 1",
+      "en": "Keep all rows from table 1"
+    },
+    {
+      "fr": "Conserver toutes les lignes du tableau 2",
+      "en": "Keep all rows from table 2"
+    },
+    {
+      "fr": "Caractère commentaire",
+      "en": "Comment character"
+    },
+    {
+      "fr": "Indiquer les variables de regroupement à placer en ligne",
+      "en": "Specify grouping variables to place in rows"
+    },
+    {
+      "fr": "Indiquer les variables de regroupement à placer en colonne",
+      "en": "Specify grouping variables to place in columns"
+    },
+    {
+      "fr": "Indiquer le nombre de décimales à afficher",
+      "en": "Specify the number of decimals to display"
+    },
+    {
+      "fr": "Ajouter la valeur globale du regroupement",
+      "en": "Add the overall grouping value"
+    },
+    {
+      "fr": "Saisir le titre du tableau",
+      "en": "Enter the table title"
+    },
+    {
+      "fr": "Enregistrer la table",
+      "en": "Save the table"
+    },
+    {
+      "fr": "Enregistrer sous",
+      "en": "Save as"
+    },
+    {
+      "fr": "Indiquer la variable à agréger",
+      "en": "Specify the variable to aggregate"
+    },
+    {
+      "fr": "Saisir le libellé de la variable à agréger",
+      "en": "Enter the label of the variable to aggregate"
+    },
+    {
+      "fr": "Indiquer la ou les fonction(s) à appliquer",
+      "en": "Specify the function(s) to apply"
+    },
+    {
+      "fr": "Choisissez la colonne qui contient les noms des nouvelles colonnes",
+      "en": "Choose the column containing the new column names"
+    },
+    {
+      "fr": "Choisissez la colonne qui contient les valeurs des nouvelles colonnes",
+      "en": "Choose the column containing the new column values"
+    },
+    {
+      "fr": "Nom de la nouvelle colonne qui contient les noms",
+      "en": "New column name containing the names"
+    },
+    {
+      "fr": "Nom de la nouvelle colonne qui contient les valeurs",
+      "en": "New column name containing the values"
+    },
+    {
+      "fr": "Colonnes à conserver",
+      "en": "Columns to keep"
+    },
+    {
+      "fr": "Exécuter la commande",
+      "en": "Execute the command"
     }
   ]
 }

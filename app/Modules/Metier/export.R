@@ -21,7 +21,7 @@ ui_export <- function(id_onglet){
                      # Sélection du type de fichier
                      fluidRow(
                        selectInput(inputId=paste0(id_onglet, "_format_fichier"),
-                                   label="Enregistrer au format",
+                                   label=i18n$t("Enregistrer au format"),
                                    choices=c("rds", "csv", "xls", "xlsx", "ods", "parquet"), selected="rds")
                      ),
                      
@@ -30,13 +30,13 @@ ui_export <- function(id_onglet){
                                       fluidRow(
                                         # choix encodage (csv uniquement)
                                         column(6,
-                                               selectInput(inputId=paste0(id_onglet, "_fic_encodage"), label="Encodage", 
+                                               selectInput(inputId=paste0(id_onglet, "_fic_encodage"), label=i18n$t("Encodage"), 
                                                            choices=c("utf-8", "iso-8859-1"))
                                         ),
                                         # indicateur en-tête de fichier (csv uniquement)
                                         column(6, aligne="left", style="padding:25px;", 
                                                checkboxInput(inputId=paste0(id_onglet, "_fic_entete"),
-                                                             label="Le fichier contient les noms de colonne",
+                                                             label=i18n$t("Le fichier contient les noms de colonne"),
                                                              value=T)
                                         )
                                       ),
@@ -44,18 +44,18 @@ ui_export <- function(id_onglet){
                                       fluidRow(
                                         # choix séparateur de champ (csv uniquement)
                                         column(4,
-                                               selectInput(inputId=paste0(id_onglet, "_fic_sep"), label="Séparateur de champ", 
+                                               selectInput(inputId=paste0(id_onglet, "_fic_sep"), label=i18n$t("Séparateur de champ"), 
                                                            choices=c(";",",","|"))
                                         ),
                                         # choix séparateur décimal (csv uniquement)
                                         column(4,
-                                               selectInput(inputId=paste0(id_onglet, "_fic_dec"), label="Séparateur décimal", 
+                                               selectInput(inputId=paste0(id_onglet, "_fic_dec"), label=i18n$t("Séparateur décimal"), 
                                                            choices=c(".",","))
                                         ),
                                         # choix séparateur de texte (csv uniquement)
                                         column(4,
                                                checkboxInput(inputId=paste0(id_onglet, "_fic_quote"), 
-                                                             label="Encadrer par des doubles quotes les chaînes de caractères", 
+                                                             label=i18n$t("Encadrer par des doubles quotes les chaînes de caractères"), 
                                                              value=F)
                                         )
                                       )
@@ -70,7 +70,7 @@ ui_export <- function(id_onglet){
                        ),
                        column(6, align="right",
                               downloadButton(outputId=paste0(id_onglet, "_dl_poste"), 
-                                             label="Enregistrer la table sur le poste local") 
+                                             label=i18n$t("Enregistrer la table sur le poste local"))
                        )
                      )
     )
