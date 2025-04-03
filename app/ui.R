@@ -68,10 +68,10 @@ ui <- dashboardPage(
       
       
       # Menus fonctionnalités, généré à partir du tableau 'onglets'
-      
+      shiny.i18n::usei18n(i18n),
       
       lapply(1:nrow(onglets), function(i){
-        menuItem(text = onglets[i,"libelle"],tabName = onglets[i, "id"])
+        menuItem(text =  i18n$t(onglets[i,"libelle"]),tabName = onglets[i, "id"])
       })
     )
   ),
