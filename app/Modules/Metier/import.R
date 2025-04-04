@@ -318,10 +318,10 @@ import_nom_colonnes <- function(id_onglet, input, output, session){
                             column(6, align="left",
                                    radioGroupButtons(inputId=paste0(id_onglet, "_", colonne),
                                                      label="",
-                                                     choices=c("Numérique"="numeric",
-                                                               "Caractères"="character",
-                                                               "Booléen"="logical",
-                                                               "Date"="date"),
+                                                     choices=c("numeric",
+                                                               "character",
+                                                               "logical",
+                                                               "date"),
                                                      selected=types_colonnes[colonne]))
                    )
                  })
