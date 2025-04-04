@@ -22,6 +22,16 @@ ui <- dashboardPage(
       )
     ),
     
+    # Icône GitHub
+    tags$li(
+      class = "dropdown",
+      tags$a(
+        href = "https://github.com/SSM-Agriculture/Rgonomie",
+        target = "_blank",
+        icon("github", class = "fab fa-github", style = "font-size: 20px; padding: 14px;")
+      )
+    ),
+    
     # Fonction javascript pour fermer la fenêtre lors du click sur le bouton quitter
     tags$li(
       class = "dropdown",
