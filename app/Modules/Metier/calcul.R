@@ -78,7 +78,7 @@ calcul_coller_colonne <- function(id_onglet, input, output, session){
       updateTextInput(session=session, input=paste0(id_onglet, "_commande"),
                       value=paste0(texte, colonne))
     } else{
-      afficher_message(id_onglet, "Aucune colonne n'a été sélectionnée pour être collée", "red", output)
+      afficher_message(id_onglet, i18n$t("Aucune colonne n'a été sélectionnée pour être collée"), "red", output)
     }
   })
 }

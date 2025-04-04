@@ -163,7 +163,7 @@ server_validation <- function(id_onglet, commande, input, output, session){
       }
       
     } else{
-      afficher_message(id_onglet, "Pour exécuter la commande, entrez un nom pour la table résultat", "red", output)
+      afficher_message(id_onglet, i18n$t("Pour exécuter la commande, entrez un nom pour la table résultat"), "red", output)
     }
   } else{
     ##### Si pas d'exécution #####

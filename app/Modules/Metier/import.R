@@ -246,7 +246,7 @@ import_fichier_selec <- function(id_onglet, input, output, session){
           shinyjs::hide(paste0(id_onglet, "_fic_carcom"))
         } else{
           # Si l'extension n'est pas reconnu, on affiche un message
-          afficher_message(id_onglet, "Format de fichier non reconnu", "red", output)
+          afficher_message(id_onglet, i18n$t("Format de fichier non reconnu"), "red", output)
         }
       }
     }, ignoreInit = TRUE,)

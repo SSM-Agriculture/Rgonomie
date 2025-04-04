@@ -407,6 +407,18 @@
       "en": "Indicate the same number of grouping variables for the 2 tables"
     },
     {
+      "fr": "Pour exécuter la commande, entrez un nom pour la table résultat",
+      "en": "To execute the command, enter a name for the result table"
+    },
+    {
+      "fr": "Aucune colonne n'a été sélectionnée pour être collée",
+      "en": "No column has been selected for pasting"
+    },
+    {
+      "fr": "Format de fichier non reconnu",
+      "en": "File format not recognized"
+    },
+    {
       "fr": "Présentation",
       "en": "Presentation"
     },
