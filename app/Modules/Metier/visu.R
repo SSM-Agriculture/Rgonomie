@@ -71,12 +71,6 @@ visu_server <- function(id_onglet, input, output, session){
         }
       }
       
-      # On affiche les informations sur les variables (colonnes)
-       # infos_var <- data.frame(Nom = names(ma_table),
-       #                         Type = sapply(ma_table, class),
-       #                         TailleMax = lapply(ma_table %>% mutate_all(as.character), nchar) %>% 
-       #                         as.data.frame() %>% summarise_all(max,na.rm=T) %>% t()) %>% ungroup()
-      
       noms_colonnes <- names(ma_table)
       types_colonnes <- sapply(ma_table, class)
       taille_max <- sapply(ma_table, function(col) {
