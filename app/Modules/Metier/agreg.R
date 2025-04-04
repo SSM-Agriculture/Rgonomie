@@ -19,11 +19,6 @@ liste_noms_fonctions <- c(
   "Minimum pondéré" = "min",
   "Premier" = "first",
   "Dernier" = "last")
-# "5eme Centile" = "quantile",
-# "25eme Centile" = "quantile",
-# "75eme Centile" = "quantile",
-# "95ème Centile" = "quantile",
-# "99ème Centile" = "quantile")
 
 ui_agreg <- function(id_onglet){
   # Création page et titre
