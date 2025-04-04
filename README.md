@@ -22,3 +22,8 @@ A venir...
 ## Contributions
 
 Si vous constatez des bugs, merci d'ouvrir une [issue](https://github.com/SSM-Agriculture/Rgonomie/issues) ou une [Pull Request](https://github.com/SSM-Agriculture/Rgonomie/pulls).
+
+## Internationalisation
+
+If you'd like to translate the Rgonomie application into your language and make it accessible to as many people as possible, you can add your language by adding the json file located in this repository here : `app/Traductions/translations.json`.  
+Thank you in advance for your contribution :pray:
