@@ -249,6 +249,50 @@
     {
       "fr": "Exécuter la commande",
       "en": "Execute the command"
+    },
+    {
+      "fr": "Présentation",
+      "en": "Presentation"
+    },
+    {
+      "fr": "Cette application a été développé au sein du Service de la Statistique et de la Prospective (SSP) du ",
+      "en": "This application was developed within the Statistics and Foresight Department of the "
+    },
+    {
+      "fr": "Ministère de l'Agriculture et de la Souveraineté Alimentaire.",
+      "en": "Ministry of Agriculture and Food Sovereignty."
+    },
+    {
+      "fr": "Son objectif est de permettre aux utilisateur d'utiliser le langage ",
+      "en": "Its purpose is to enable users to use the language "
+    },
+    {
+      "fr": "via une interface graphique pour exploiter des fichiers de données et réaliser des traitements statistiques de base.",
+      "en": "via a graphical interface to work with data files and perform basic statistical processing."
+    },
+    {
+      "fr": "Pour des traitements statistiques plus avancées ou des manipulations de données plus complexes, il est recommandé d'utiliser le langage R via un environnement de développement intégré comme ",
+      "en": "For more advanced statistical processing or complex data manipulation, it is recommended to use the R language via an integrated development environment such as "
+    },
+    {
+      "fr": "Les utilisateurs qui désirent se former peuvent consulter par exemple ",
+      "en": "Users who wish to learn can consult, for example, resources available for instance "
+    },
+    {
+      "fr": "sur ce site.",
+      "en": "on this website."
+    },
+    {
+      "fr": "Conception, réalisation",
+      "en": "Design and implementation"
+    },
+    {
+      "fr": " or",
+      "en": " ou"
+    },
+    {
+      "fr": "Hébergement",
+      "en": "Hosting"
     }
   ]
 }
