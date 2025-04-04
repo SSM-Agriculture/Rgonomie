@@ -32,11 +32,10 @@ ui_fusion <- function(id_onglet){
                        column(6, align="right",
                               selectInput(inputId=paste0(id_onglet, "_mode"),
                                           label=i18n$t("Type de fusion"),
-                                          choices=c("Ajouter des lignes" = "lignes",
-                                                    "Ajouter des colonnes" = "colonnes"))
+                                          choices=c("bind_rows","bind_cols"))
                        ),
                        column(6, style='padding-top:5px;', align="left",
-                              conditionalPanel(paste0("input.", id_onglet, "_mode == 'colonnes'"),
+                              conditionalPanel(paste0("input.", id_onglet, "_mode == 'bind_cols'"),
                                                selectInput(inputId=paste0(id_onglet, "_appariement"), label="", 
                                                            choices=c("avec appariement" = "avec", "sans appariement" = "sans"),
                                                            selected="avec appariement")
@@ -45,7 +44,7 @@ ui_fusion <- function(id_onglet){
                      ),
                      
                      # Partie spécifique à la fusion avec appariement
-                     conditionalPanel(paste0("input.", id_onglet, "_mode == 'colonnes' && input.", 
+                     conditionalPanel(paste0("input.", id_onglet, "_mode == 'bind_cols' && input.", 
                                              id_onglet, "_appariement == 'avec'"),
                                       
                                       # Choix des variables de regroupement
@@ -119,7 +118,7 @@ fusion_generer_syntaxe <- function(id_onglet, input, output, session){
     commande <- ""
     
     # Cas d'un ajout de lignes
-    if (mode_fusion == "lignes"){
+    if (mode_fusion == "bind_rows"){
       commande <- paste0("bind_rows(", table_entree_1, ",", table_entree_2, ")")
       
       # Cas d'un ajout de colonnes sans appariement
@@ -160,7 +159,7 @@ fusion_generer_syntaxe <- function(id_onglet, input, output, session){
       } else{
         commande <- ""
         afficher_message(id_onglet, 
-                         "Il faut indiquer le même nombre de variables de regroupement pour les 2 tables",
+                         i18n$t("Il faut indiquer le même nombre de variables de regroupement pour les 2 tables"),
                          "red",
                          output)
       }

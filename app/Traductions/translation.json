@@ -55,6 +55,10 @@
       "en": "Close tables"
     },
     {
+      "fr": "Fermer la table",
+      "en": "Close table"
+    },
+    {
       "fr": "À propos",
       "en": "About"
     },
@@ -215,10 +219,6 @@
       "en": "Save as"
     },
     {
-      "fr": "Indiquer la variable à agréger",
-      "en": "Specify the variable to aggregate"
-    },
-    {
       "fr": "Saisir le libellé de la variable à agréger",
       "en": "Enter the label of the variable to aggregate"
     },
@@ -359,6 +359,14 @@
       "en": "Loading"
     },
     {
+      "fr": "Erreur",
+      "en": "Error"
+    },
+    {
+      "fr": "Pour des raisons pédagogiques, le chargement des fichiers est limité à 80 Mo dans Rgonomie.",
+      "en": "For pedagogical reasons, file uploads are limited to 80 MB in Rgonomie."
+    },
+    {
       "fr": "Transposer",
       "en": "Transpose"
     },
@@ -393,6 +401,10 @@
     {
       "fr": "Veuillez patientez pendant le traitement de la commande",
       "en": "Please wait while your order is being processed"
+    },
+    {
+      "fr": "Il faut indiquer le même nombre de variables de regroupement pour les 2 tables",
+      "en": "Indicate the same number of grouping variables for the 2 tables"
     },
     {
       "fr": "Présentation",

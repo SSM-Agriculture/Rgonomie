@@ -29,7 +29,9 @@ ui_transpo <- function(id_onglet) {
                  radioGroupButtons(
                    inputId = paste0(id_onglet, "_type"),
                    label = "",
-                   choices = c("Transposer", "Restructurer"),
+                   choices = c(
+                     "Transposer" = "Transp",
+                     "Restructurer" = "Restr"),
                    individual = TRUE,
                    checkIcon = list(
                      yes = tags$i(
@@ -47,7 +49,7 @@ ui_transpo <- function(id_onglet) {
         
         # Choix des paramètres si transposition partielle
         conditionalPanel(
-          condition = paste0("input.", id_onglet, "_type != 'Transposer'"),
+          condition = paste0("input.", id_onglet, "_type != 'Transp'"),
           
           # Sens de la transposition partielle
           fluidRow(
@@ -56,10 +58,8 @@ ui_transpo <- function(id_onglet) {
                    radioGroupButtons(
                      inputId = paste0(id_onglet, "_sens"),
                      label = "",
-                     choices = c(
-                       "Lignes en colonnes" = "wider",
-                       "Colonnes en lignes" = "longer"
-                     ),
+                     choices = 
+                       c("pivot_wider","pivot_longer"),
                      individual = TRUE,
                      checkIcon = list(
                        yes = tags$i(
@@ -76,7 +76,7 @@ ui_transpo <- function(id_onglet) {
           ),
           
           # Lignes en colonnes
-          conditionalPanel(condition = paste0("input.", id_onglet, "_sens == 'wider'"),
+          conditionalPanel(condition = paste0("input.", id_onglet, "_sens == 'pivot_wider'"),
                            fluidRow(
                              column(6, align="right",
                                     selectInput(inputId=paste0(id_onglet, "_wider_names"),
@@ -92,7 +92,7 @@ ui_transpo <- function(id_onglet) {
           ),
           
           # Lignes en colonnes
-          conditionalPanel(condition = paste0("input.", id_onglet, "_sens == 'longer'"),
+          conditionalPanel(condition = paste0("input.", id_onglet, "_sens == 'pivot_longer'"),
                            fluidRow(
                              column(6, align="right",
                                     textInput(inputId=paste0(id_onglet, "_longer_names"),
@@ -172,15 +172,15 @@ transpo_generer_syntaxe <- function(id_onglet, input, output, session){
     # Le nom de la table en entrée
     table_entree <- input[[paste0(id_onglet, "_env_df")]]
     
-    if (input[[paste0(id_onglet, "_type")]] == "Transposer"){
+    if (input[[paste0(id_onglet, "_type")]] == "Transp"){
       commande <- paste0("as.data.frame(t(", table_entree,"))")
     } else{
-      if (input[[paste0(id_onglet, "_sens")]] == "wider"){
+      if (input[[paste0(id_onglet, "_sens")]] == "pivot_wider"){
         commande <- paste0(table_entree, " %>% pivot_wider(names_from=", 
                            input[[paste0(id_onglet, "_wider_names")]],
                            ", values_from=", input[[paste0(id_onglet, "_wider_values")]],
                            ")")
-      } else if (input[[paste0(id_onglet, "_sens")]] == "longer"){
+      } else if (input[[paste0(id_onglet, "_sens")]] == "pivot_longer"){
         commande <- paste0(table_entree, " %>% pivot_longer(", paste0("-", input[[paste0(id_onglet, "_longer_keep")]], collapse = ", "), 
                            ", names_to=\"", input[[paste0(id_onglet, "_longer_names")]],
                            "\", values_to=\"", input[[paste0(id_onglet, "_longer_values")]], "\")")
