@@ -72,8 +72,8 @@ ui_filtre_ligne <- function(id_onglet){
                                          align = "center",
                                          selectInput(
                                            inputId = paste0(id_onglet, "_logique"), label = i18n$t("Les observations doivent respecter"),
-                                           choices = c("toutes les conditions"=" & ",
-                                                       "au moins une condition"=" | ")
+                                           choices = c("toutes les conditions / all conditions"=" & ",
+                                                       "au moins une condition / at least one condition"=" | ")
                                          )
                          )),
                          
