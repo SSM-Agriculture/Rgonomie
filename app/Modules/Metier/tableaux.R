@@ -163,8 +163,8 @@ tableaux_form<- function(id_onglet, liste_col, nb_form){
         column(3,
                selectInput(inputId=paste0(id_onglet, "_coef", nb_form),
                            label=i18n$t("Indiquer le coefficient de pondération"),
-                           choices=c("pas de pondération", liste_col),
-                           selected="pas de pondération",
+                           choices=c("pas de pondération / no weight", liste_col),
+                           selected="pas de pondération / no weight",
                            multiple=F)
         ),
         column(1, style = "padding:25px;",
@@ -353,7 +353,7 @@ tableaux_generer_syntaxe <- function(id_onglet, input, output, session){
       )
       
       #### Cas sans pondération
-      if (coef_demander == "pas de pondération") {
+      if (coef_demander == "pas de pondération / no weight") {
         
         calcul_temp[i] <- paste0("(", nouveauNom, input[[paste0(id_onglet, "_form_var", i)]], ") * (",
                                  paste0(liste_noms_fonctions_tab[input[[paste0(id_onglet, "_form_func", i)]]],

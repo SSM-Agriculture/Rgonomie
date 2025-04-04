@@ -3,22 +3,22 @@
 
 # Correspondance des noms de fonctions Rgonomie vers noms de fonctions R
 liste_noms_fonctions <- c(
-  "Effectif" = "",
-  "Effectif pondéré" = "",
-  "Somme" = "sum",
-  "Somme pondérée" = "sum",
-  "Moyenne" = "mean",
-  "Moyenne pondérée" = "mean",
-  "Médiane" = "median",
-  "Médiane pondérée" = "median",
-  "Ecart-type" = "sd",
+  "Effectif / Count" = "",
+  "Effectif pondéré / Weighted count" = "",
+  "Somme / Sum" = "sum",
+  "Somme pondérée / Weighted sum" = "sum",
+  "Moyenne / Mean" = "mean",
+  "Moyenne pondérée / Weighted mean" = "mean",
+  "Médiane / Median" = "median",
+  "Médiane pondérée / Weighted median" = "median",
+  "Ecart-type / Standard deviation" = "sd",
   "Variance" = "var",
   "Maximum" = "max",
-  "Maximum pondéré" = "max",
+  "Maximum pondéré / Weighted maximum" = "max",
   "Minimum" = "min", 
-  "Minimum pondéré" = "min",
-  "Premier" = "first",
-  "Dernier" = "last")
+  "Minimum pondéré Weighted minimum" = "min",
+  "Premier / First" = "first",
+  "Dernier / Last" = "last")
 
 ui_agreg <- function(id_onglet){
   # Création page et titre
@@ -137,8 +137,8 @@ agreg_reinit_param <- function(id_onglet, input, output, session){
       )
       updateSelectInput(session,
                         inputId = paste0(id_onglet, "_coef"),
-                        choices = c("pas de pondération", names(get(nom_table))),
-                        selected="pas de pondération"
+                        choices = c("pas de pondération / no weight", names(get(nom_table))),
+                        selected="pas de pondération / no weight"
       )
       
       # On supprime les ui du formulaire
@@ -255,7 +255,7 @@ agreg_generer_syntaxe <- function(id_onglet, input, output, session){
         
         # Cas de données pondérées avec les fonctions weighted
         if ((ma_fonction %in% c("Moyenne pondérée", "Médiane pondérée"))
-            & (coef != "pas de pondération")){
+            & (coef != "pas de pondération / no weight")){
           fonctions <- c(fonctions, paste0(mon_resultat, "=", "weighted.",
                                            liste_noms_fonctions[ma_fonction], "(",
                                            ma_variable, ", ",
@@ -263,7 +263,7 @@ agreg_generer_syntaxe <- function(id_onglet, input, output, session){
           
           # Cas de données pondérées avec sum, max ou min (pas de weighted, il faut multiplier par le coef)
         } else if ((ma_fonction %in% c("Maximum pondéré", "Minimum pondéré", "Somme pondérée")) 
-                   & (coef != "pas de pondération")){
+                   & (coef != "pas de pondération / no weight")){
           fonctions <- c(fonctions, paste0(mon_resultat, "=",
                                            liste_noms_fonctions[ma_fonction], "(",
                                            ma_variable, " * ", coef,
@@ -274,11 +274,11 @@ agreg_generer_syntaxe <- function(id_onglet, input, output, session){
           fonctions <- c(fonctions, paste0(mon_resultat, "=n()"))
           
           # Effectif pondéré
-        } else if ((ma_fonction == "Effectif pondéré") & (coef != "pas de pondération")){
+        } else if ((ma_fonction == "Effectif pondéré") & (coef != "pas de pondération / no weight")){
           fonctions <- c(fonctions, paste0(mon_resultat, "=sum(", coef, gestion_na, ")"))
           
           # Cas de fonctions non pondérées
-        } else {#if (coef == "pas de pondération"){
+        } else {
           fonctions <- c(fonctions, paste0(mon_resultat, "=",
                                            liste_noms_fonctions[ma_fonction], "(",
                                            ma_variable, gestion_na, ")"))
