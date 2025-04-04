@@ -32,7 +32,7 @@ ui_filtre_ligne <- function(id_onglet){
                            column(4,
                                   align = "center",
                                   selectInput(inputId = paste0(id_onglet, "_choix_col"), 
-                                              label = "Choisissez une colonne", 
+                                              label = i18n$t("Choisissez une colonne"), 
                                               choices = c(), multiple=F)
                            ),
                            column(4,
@@ -45,14 +45,14 @@ ui_filtre_ligne <- function(id_onglet){
                            column(4,
                                   align = "center",
                                   textInput(inputId = paste0(id_onglet, "_expr"), 
-                                            label = "Expression")                 
+                                            label = i18n$t("Expression"))              
                                   
                            )
                          ),
                          fluidRow(column(12,
                                          align = "center",
                                          actionButton(inputId = paste0(id_onglet, "_nouv_condition"),
-                                                      label = "Ajouter la condition")
+                                                      label = i18n$t("Ajouter la condition"))
                          )),
                          fluidRow(column(12, align="center", 
                                          textAreaInput(inputId=paste0(id_onglet, "_condition_affichage"), label="",
@@ -61,17 +61,17 @@ ui_filtre_ligne <- function(id_onglet){
                          fluidRow(column(6,
                                          align = "center",
                                          actionButton(inputId = paste0(id_onglet, "_vider_condition"),
-                                                      label = "Effacer les conditions")
+                                                      label = i18n$t("Effacer les conditions"))
                          ),
                          column(6,
                                 align='center',
                                 actionButton(inputId = paste0(id_onglet, "_suppr_der_condition"),
-                                             label = "Effacer la dernière condition")
+                                             label = i18n$t("Effacer la dernière condition"))
                          )),
                          fluidRow(column(12,
                                          align = "center",
                                          selectInput(
-                                           inputId = paste0(id_onglet, "_logique"), label = "Les observations doivent respecter",
+                                           inputId = paste0(id_onglet, "_logique"), label = i18n$t("Les observations doivent respecter"),
                                            choices = c("toutes les conditions"=" & ",
                                                        "au moins une condition"=" | ")
                                          )

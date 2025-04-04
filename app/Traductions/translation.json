@@ -275,6 +275,122 @@
       "en": "descending"
     },
     {
+      "fr": "Choisissez une colonne",
+      "en": "Choose a column"
+    },
+    {
+      "fr": "Ajouter la condition",
+      "en": "Add condition"
+    },
+    {
+      "fr": "Effacer les conditions",
+      "en": "Clear conditions"
+    },
+    {
+      "fr": "Effacer la dernière condition",
+      "en": "Clear last condition"
+    },
+    {
+      "fr": "Les observations doivent respecter",
+      "en": "Observations must meet"
+    },
+    {
+      "fr": "toutes les conditions",
+      "en": "all conditions"
+    },
+    {
+      "fr": "au moins une condition",
+      "en": "at least one condition"
+    },
+    {
+      "fr": "strictement supérieur à",
+      "en": "strictly greater than"
+    },
+    {
+      "fr": "strictement inférieur à",
+      "en": "strictly less than"
+    },
+    {
+      "fr": "supérieur ou égal à",
+      "en": "greater than or equal to"
+    },
+    {
+      "fr": "inférieur ou égal à",
+      "en": "less than or equal to"
+    },
+    {
+      "fr": "égal à",
+      "en": "equal to"
+    },
+    {
+      "fr": "différent de",
+      "en": "not equal to"
+    },
+    {
+      "fr": "non renseigné",
+      "en": "not filled"
+    },
+    {
+      "fr": "renseigné",
+      "en": "filled"
+    },
+    {
+      "fr": "Appliquer à toute la table",
+      "en": "Apply to entire table"
+    },
+    {
+      "fr": "Sélectionnez les colonnes à modifier",
+      "en": "Select columns to modify"
+    },
+    {
+      "fr": "Ecrire la valeur à rechercher",
+      "en": "Enter value to search for"
+    },
+    {
+      "fr": "Ecrire la valeur qui va la remplacer (Mettre entre guillemets les chaines de caractères)",
+      "en": "Enter the value to replace it with (Put character strings in quotes)"
+    },
+    {
+      "fr": "Sélectionnez les colonnes à conserver",
+      "en": "Select columns to keep"
+    },
+    {
+      "fr": "Chargement",
+      "en": "Loading"
+    },
+    {
+      "fr": "Transposer",
+      "en": "Transpose"
+    },
+    {
+      "fr": "Restructurer",
+      "en": "Restructure"
+    },
+    {
+      "fr": "Lignes en colonnes",
+      "en": "Rows to columns"
+    },
+    {
+      "fr": "Colonnes en lignes",
+      "en": "Columns to rows"
+    },
+    {
+      "fr": "Indiquer la variable à agréger",
+      "en": "Specify the variable to aggregate"
+    },
+    {
+      "fr": "Indiquer la fonction à appliquer",
+      "en": "Specify the function to apply"
+    },
+    {
+      "fr": "Ajouter des lignes",
+      "en": "Add rows"
+    },
+    {
+      "fr": "Ajouter des colonnes",
+      "en": "Add columns"
+    },
+    {
       "fr": "Veuillez patientez pendant le traitement de la commande",
       "en": "Please wait while your order is being processed"
     },

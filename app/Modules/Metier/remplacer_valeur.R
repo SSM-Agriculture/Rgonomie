@@ -23,7 +23,7 @@ ui_remplacer_valeur <- function(id_onglet){
             column(3, align="left",
                    # Sélection des colonnes
                    checkboxInput(inputId=paste0(id_onglet, "_toutes_colonnes"),
-                                 label = "Appliquer à toute la table", 
+                                 label = i18n$t("Appliquer à toute la table"), 
                                  value= FALSE,
                                  width="100%")
             ),
@@ -31,7 +31,7 @@ ui_remplacer_valeur <- function(id_onglet){
               column(9, align="right",
                      # Sélection des colonnes
                      selectInput(inputId=paste0(id_onglet, "_choix_col"),
-                                 label = "Sélectionnez les colonnes à modifier", 
+                                 label = i18n$t("Sélectionnez les colonnes à modifier"), 
                                  multiple=T,
                                  choices=c(),
                                  width="100%")
@@ -43,13 +43,13 @@ ui_remplacer_valeur <- function(id_onglet){
             column(6, align="right",
                    # input du texte à chercher
                    textInput(inputId=paste0(id_onglet, "_text_cherche"),
-                               label = "Ecrire la valeur à rechercher",
+                               label = i18n$t("Ecrire la valeur à rechercher"),
                              width = "100%")
             ),
             column(6, align="left",
                    # input du texte qui le remplace
                    textInput(inputId=paste0(id_onglet, "_text_remplace"),
-                             label = "Ecrire la valeur qui va la remplacer (Mettre entre guillemets les chaines de caractères)",
+                             label = i18n$t("Ecrire la valeur qui va la remplacer (Mettre entre guillemets les chaines de caractères)"),
                              width = "100%")
                    
             )

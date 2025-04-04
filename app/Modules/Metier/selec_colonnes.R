@@ -23,7 +23,7 @@ ui_selec_colonnes <- function(id_onglet){
             column(12, align="right",
                    # Sélection des colonnes
                    selectInput(inputId=paste0(id_onglet, "_choix_col"),
-                               label = "Sélectionnez les colonnes à conserver", 
+                               label = i18n$t("Sélectionnez les colonnes à conserver"), 
                                multiple=T,
                                choices=c(),
                                width="100%")

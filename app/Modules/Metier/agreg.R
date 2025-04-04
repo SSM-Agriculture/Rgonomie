@@ -105,13 +105,13 @@ agreg_form<- function(id_onglet, liste_col, nb_form){
         ),
         column(4,
                selectInput(inputId = paste0(id_onglet, "_form_var", nb_form), 
-                           label = "Indiquer la variable à agréger",
+                           label = i18n$t("Indiquer la variable à agréger"),
                            choices = liste_col, multiple = F)
         ),
         column(3,
                selectInput(
                  inputId = paste0(id_onglet, "_form_func", nb_form),
-                 label = "Indiquer la fonction à appliquer",
+                 label = i18n$t("Indiquer la fonction à appliquer"),
                  choices = names(liste_noms_fonctions),
                  multiple = F
                )
