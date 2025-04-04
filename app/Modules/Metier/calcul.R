@@ -51,14 +51,6 @@ ui_calcul <- function(id_onglet, input, output, session){
                            )
                          ),
                          
-                         fluidRow(
-                           column(12, align="center",
-                                  tags$a(href="https://orion.agriculture/confluence/display/CER/La+documentation",
-                                         target="_blank",
-                                         "Lien vers la documentation R")
-                           )
-                         ),
-                         
                          HTML("<br/><br/>"),
                          
                          # Génération de la validation de la commande
