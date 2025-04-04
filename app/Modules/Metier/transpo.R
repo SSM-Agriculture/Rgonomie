@@ -85,7 +85,7 @@ ui_transpo <- function(id_onglet) {
                              ),
                              column(6, align="left",
                                     selectInput(inputId=paste0(id_onglet, "_wider_values"),
-                                                label=i18n$t("Choisissez la colonne qui contient les valeur des nouvelles colonnes"),
+                                                label=i18n$t("Choisissez la colonne qui contient les valeurs des nouvelles colonnes"),
                                                 choices=c())
                              )
                            )
