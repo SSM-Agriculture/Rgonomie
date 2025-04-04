@@ -30,8 +30,7 @@ ui_transpo <- function(id_onglet) {
                    inputId = paste0(id_onglet, "_type"),
                    label = "",
                    choices = c(
-                     "Transposer" = "Transp",
-                     "Restructurer" = "Restr"),
+                     "Transpose","Pivot"),
                    individual = TRUE,
                    checkIcon = list(
                      yes = tags$i(
@@ -49,7 +48,7 @@ ui_transpo <- function(id_onglet) {
         
         # Choix des paramètres si transposition partielle
         conditionalPanel(
-          condition = paste0("input.", id_onglet, "_type != 'Transp'"),
+          condition = paste0("input.", id_onglet, "_type != 'Transpose'"),
           
           # Sens de la transposition partielle
           fluidRow(
@@ -172,7 +171,7 @@ transpo_generer_syntaxe <- function(id_onglet, input, output, session){
     # Le nom de la table en entrée
     table_entree <- input[[paste0(id_onglet, "_env_df")]]
     
-    if (input[[paste0(id_onglet, "_type")]] == "Transp"){
+    if (input[[paste0(id_onglet, "_type")]] == "Transpose"){
       commande <- paste0("as.data.frame(t(", table_entree,"))")
     } else{
       if (input[[paste0(id_onglet, "_sens")]] == "pivot_wider"){
