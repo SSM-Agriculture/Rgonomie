@@ -31,8 +31,8 @@
       "en": "Select columns"
     },
     {
-      "fr": "Transposer une table",
-      "en": "Transpose table"
+      "fr": "Pivoter/Transposer une table",
+      "en": "Pivot/Transpose a table"
     },
     {
       "fr": "Calculer une colonne",
@@ -248,7 +248,7 @@
     },
     {
       "fr": "Exécuter la commande",
-      "en": "Execute the command"
+      "en": "Execute command"
     },
     {
       "fr": "Format détecté : ",
