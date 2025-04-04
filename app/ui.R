@@ -8,16 +8,18 @@ ui <- dashboardPage(
     
     ##### Menu déroulant dans l'en-tête #####
     
-    # Icône utilisateur
-    tags$li(
-      class = "dropdown",
-      tags$div(class = "icon-user", icon("user", class = "far fa-user"))
-    ),
-    
     # Nom de la personne connectée
     tags$li(
       class = "dropdown",
-      tags$div(class = "utilisateur", Sys.info()["user"])
+      tags$div(
+        selectInput('selected_language',
+                    "",
+                    choices = setNames(
+                      i18n$get_languages(),
+                      c("🇫🇷 - Français","🇬🇧  / 🇺🇸- English") # Set labels for the languages
+                    ),
+                    selected = i18n$get_languages()[1])
+      )
     ),
     
     # Fonction javascript pour fermer la fenêtre lors du click sur le bouton quitter
@@ -47,16 +49,6 @@ ui <- dashboardPage(
     div(tags$img(src='logo_rgonomie.png',width = 130, height = 130),
         # On centre le logo et on ajoute des marges en haut et en bas
         style="text-align: center; margin: 10px 10px;"),
-    
-    div(
-      selectInput('selected_language',
-                  "",
-                  choices = setNames(
-                    i18n$get_languages(),
-                    c("🇫🇷 - Français","🇬🇧  / 🇺🇸- English") # Set labels for the languages
-                  ),
-                  selected = i18n$get_languages()[1])
-    ),
     
     sidebarMenu(
       id = "menu",
