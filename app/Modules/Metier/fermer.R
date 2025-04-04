@@ -88,7 +88,8 @@ fermer_server <- function(id_onglet, input, output, session){
         TailleMax = taille_max
       )
       
-      output[[paste0(id_onglet, "_affiche_variables")]] <- renderDT(datatable(infos_var, rownames = FALSE))
+      output[[paste0(id_onglet, "_affiche_variables")]] <- renderDT(datatable(infos_var, rownames = FALSE,
+                                                                              colnames = c(i18n$t("Nom"), "Type",i18n$t("TailleMax"))))
 
       
       # Une fois le traitement fini on enlève la fenêtre modale

@@ -255,6 +255,26 @@
       "en": "Detected format : "
     },
     {
+      "fr": "Nom",
+      "en": "Name"
+    },
+    {
+      "fr": "TailleMax",
+      "en": "MaxSize"
+    },
+    {
+      "fr": "Sélectionnez les critères de tri",
+      "en": "Select sort criteria"
+    },
+    {
+      "fr": "croissant",
+      "en": "ascending"
+    },
+    {
+      "fr": "décroissant",
+      "en": "descending"
+    },
+    {
       "fr": "Veuillez patientez pendant le traitement de la commande",
       "en": "Please wait while your order is being processed"
     },

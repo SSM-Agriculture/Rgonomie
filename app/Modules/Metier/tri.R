@@ -23,7 +23,7 @@ ui_tri <- function(id_onglet){
             column(6, align="right",
                    # Sélection des critères de tri
                    selectInput(inputId=paste0(id_onglet, "_choix_col"),
-                               label = "Sélectionnez les critères de tri", 
+                               label = i18n$t("Sélectionnez les critères de tri"), 
                                multiple=T,
                                choices=c())
             ),

@@ -86,9 +86,10 @@ visu_server <- function(id_onglet, input, output, session){
         Type = types_colonnes,
         TailleMax = taille_max
       )
+      
       # Afficher les informations sur les colonnes
-       
-       output[[paste0(id_onglet, "_affiche_variables")]] <- renderDT(datatable(infos_var, rownames = FALSE))
+       output[[paste0(id_onglet, "_affiche_variables")]] <- renderDT(datatable(infos_var, rownames = FALSE,
+                                                                               colnames = c(i18n$t("Nom"), "Type",i18n$t("TailleMax"))))
 
       # On affiche la table
       output[[paste0(id_onglet, "_affiche_table")]] <- renderDT({ma_table},
