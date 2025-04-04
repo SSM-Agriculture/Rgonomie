@@ -32,19 +32,21 @@ ui_fusion <- function(id_onglet){
                        column(6, align="right",
                               selectInput(inputId=paste0(id_onglet, "_mode"),
                                           label=i18n$t("Type de fusion"),
-                                          choices=c("bind_rows","bind_cols"))
+                                          choices=c("Ajouter des lignes / Add rows" = "lignes",
+                                                    "Ajouter des colonnes / Add cols" = "colonnes"))
                        ),
                        column(6, style='padding-top:5px;', align="left",
-                              conditionalPanel(paste0("input.", id_onglet, "_mode == 'bind_cols'"),
+                              conditionalPanel(paste0("input.", id_onglet, "_mode == 'colonnes'"),
                                                selectInput(inputId=paste0(id_onglet, "_appariement"), label="", 
-                                                           choices=c("avec appariement" = "avec", "sans appariement" = "sans"),
-                                                           selected="avec appariement")
+                                                           choices=c("avec appariement / with matching" = "avec", 
+                                                                     "sans appariement / without matching" = "sans"),
+                                                           selected="avec appariement / with matching")
                               )
                        )
                      ),
                      
                      # Partie spécifique à la fusion avec appariement
-                     conditionalPanel(paste0("input.", id_onglet, "_mode == 'bind_cols' && input.", 
+                     conditionalPanel(paste0("input.", id_onglet, "_mode == 'colonnes' && input.", 
                                              id_onglet, "_appariement == 'avec'"),
                                       
                                       # Choix des variables de regroupement
@@ -118,7 +120,7 @@ fusion_generer_syntaxe <- function(id_onglet, input, output, session){
     commande <- ""
     
     # Cas d'un ajout de lignes
-    if (mode_fusion == "bind_rows"){
+    if (mode_fusion == "lignes"){
       commande <- paste0("bind_rows(", table_entree_1, ",", table_entree_2, ")")
       
       # Cas d'un ajout de colonnes sans appariement
