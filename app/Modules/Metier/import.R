@@ -365,8 +365,8 @@ import_valider <- function(id_onglet, input, output, session){
     # Si la taille du fichier dépasse 80 Mo on empêche l'import
     if (file_size > 80) {
       showModal(modalDialog(
-        title = "Erreur",
-        "Pour des raisons pédagogiques, le chargement des fichiers est limité à 80 Mo dans Rgonomie.",
+        title = i18n$t("Erreur"),
+        i18n$t("Pour des raisons pédagogiques, le chargement des fichiers est limité à 80 Mo dans Rgonomie."),
         easyClose = TRUE,
         footer = NULL
       ))
@@ -378,7 +378,7 @@ import_valider <- function(id_onglet, input, output, session){
     if (table_sortie != ""){
       # On affiche une fenêtre modale pour bloquer l'utilisateur pendant le traitement
       showModal(modalDialog(
-        title = "Chargement",
+        title = i18n$t("Chargement"),
         i18n$t("Veuillez patientez pendant le traitement de la commande"),
         size = "l"
         , easyClose = F, footer = NULL

@@ -53,7 +53,7 @@ fermer_server <- function(id_onglet, input, output, session){
       
       # On affiche une fenêtre modale pour bloquer l'utilisateur pendant le traitement
       showModal(modalDialog(
-        title = "Chargement",
+        title = i18n$t("Chargement"),
         i18n$t("Veuillez patientez pendant le traitement de la commande"),
         size = "l"
         , easyClose = F, footer = NULL
@@ -101,7 +101,7 @@ fermer_server <- function(id_onglet, input, output, session){
   observeEvent(input[[paste0(id_onglet, "_fermer_table")]],{
     
     showModal(modalDialog(
-      title = "Fermer la table",
+      title = i18n$t("Fermer la table"),
       "Etes-vous sûr de vouloir supprimer cette table de votre environement ?",
       size = "l"
       , easyClose = F, footer = tagList(

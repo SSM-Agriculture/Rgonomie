@@ -54,7 +54,7 @@ visu_server <- function(id_onglet, input, output, session){
       
       # On affiche une fenêtre modale pour bloquer l'utilisateur pendant le traitement
       showModal(modalDialog(
-        title = "Chargement",
+        title = i18n$t("Chargement"),
         i18n$t("Veuillez patientez pendant le traitement de la commande"),
         size = "l"
         , easyClose = F, footer = NULL

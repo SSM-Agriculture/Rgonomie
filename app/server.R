@@ -3,7 +3,7 @@ server <- function(input, output, session){
   # Affichage du pop-up de bienvenue lors du premier chargement de l'application
   observe({
     shinyalert(
-      title = "Bienvenue dans Rgonomie !",
+      title = "Rgonomie",
       text =HTML(
         paste(
           "<strong>", 
