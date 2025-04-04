@@ -8,16 +8,28 @@ ui <- dashboardPage(
     
     ##### Menu déroulant dans l'en-tête #####
     
-    # Icône utilisateur
-    tags$li(
-      class = "dropdown",
-      tags$div(class = "icon-user", icon("user", class = "far fa-user"))
-    ),
-    
     # Nom de la personne connectée
     tags$li(
       class = "dropdown",
-      tags$div(class = "utilisateur", Sys.info()["user"])
+      tags$div(
+        selectInput('selected_language',
+                    "",
+                    choices = setNames(
+                      i18n$get_languages(),
+                      c("🇫🇷 - Français","🇬🇧  / 🇺🇸- English") # Set labels for the languages
+                    ),
+                    selected = i18n$get_languages()[1])
+      )
+    ),
+    
+    # Icône GitHub
+    tags$li(
+      class = "dropdown",
+      tags$a(
+        href = "https://github.com/SSM-Agriculture/Rgonomie",
+        target = "_blank",
+        icon("github", class = "fab fa-github", style = "font-size: 20px; padding: 14px;")
+      )
     ),
     
     # Fonction javascript pour fermer la fenêtre lors du click sur le bouton quitter
@@ -58,10 +70,10 @@ ui <- dashboardPage(
       
       
       # Menus fonctionnalités, généré à partir du tableau 'onglets'
-      
+      shiny.i18n::usei18n(i18n),
       
       lapply(1:nrow(onglets), function(i){
-        menuItem(text = onglets[i,"libelle"],tabName = onglets[i, "id"])
+        menuItem(text =  i18n$t(onglets[i,"libelle"]),tabName = onglets[i, "id"])
       })
     )
   ),
@@ -71,6 +83,7 @@ ui <- dashboardPage(
   
   dashboardBody(
     useShinyjs(),
+    shiny.i18n::usei18n(i18n),
     tags$head(
       # Fichier CSS
       tags$link(rel = "stylesheet", type = "text/css", href = "style.css")),

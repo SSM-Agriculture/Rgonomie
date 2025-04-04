@@ -6,7 +6,7 @@ ui_fusion <- function(id_onglet){
   fluidPage(
     fluidRow(
       column(12, align="center",
-             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle))
+             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle) %>% i18n$t())
       )
     ),
     
@@ -16,12 +16,12 @@ ui_fusion <- function(id_onglet){
     fluidRow(
       column(6, align="left",
              selectInput(inputId=paste0(id_onglet, "_env_df_1"),
-                         label="Sélectionnez la première table",
+                         label=i18n$t("Sélectionnez la première table"),
                          choices=c("", liste_df))
       ),
       column(6, align="right",
              selectInput(inputId=paste0(id_onglet, "_env_df_2"),
-                         label="Sélectionnez la deuxième table",
+                         label=i18n$t("Sélectionnez la deuxième table"),
                          choices=c("", liste_df))
       )
     ),
@@ -31,15 +31,16 @@ ui_fusion <- function(id_onglet){
                      fluidRow(
                        column(6, align="right",
                               selectInput(inputId=paste0(id_onglet, "_mode"),
-                                          label="Type de fusion",
-                                          choices=c("Ajouter des lignes" = "lignes",
-                                                    "Ajouter des colonnes" = "colonnes"))
+                                          label=i18n$t("Type de fusion"),
+                                          choices=c("Ajouter des lignes / Add rows" = "lignes",
+                                                    "Ajouter des colonnes / Add cols" = "colonnes"))
                        ),
                        column(6, style='padding-top:5px;', align="left",
                               conditionalPanel(paste0("input.", id_onglet, "_mode == 'colonnes'"),
                                                selectInput(inputId=paste0(id_onglet, "_appariement"), label="", 
-                                                           choices=c("avec appariement" = "avec", "sans appariement" = "sans"),
-                                                           selected="avec appariement")
+                                                           choices=c("avec appariement / with matching" = "avec", 
+                                                                     "sans appariement / without matching" = "sans"),
+                                                           selected="avec appariement / with matching")
                               )
                        )
                      ),
@@ -52,23 +53,23 @@ ui_fusion <- function(id_onglet){
                                       fluidRow(
                                         column(6, align="left",
                                                selectInput(inputId=paste0(id_onglet, "_by_1"), 
-                                                           label="Choisissez les variables de regroupement de la table 1",
+                                                           label=i18n$t("Choisissez les variables de regroupement de la table 1"),
                                                            choices=c(), multiple=T)
                                         ),
                                         column(6, align="right",
                                                selectInput(inputId=paste0(id_onglet, "_by_2"),
-                                                           label="Choisissez les variables de regroupement de la table 2",
+                                                           label=i18n$t("Choisissez les variables de regroupement de la table 2"),
                                                            choices=c(), multiple=T)
                                         )),
                                       
                                       # Sélection des variables à garder
                                       fluidRow(
                                         column(6, align="left",
-                                               checkboxInput(inputId=paste0(id_onglet, "_all_1"), label="Conserver toutes les lignes du tableau 1",
+                                               checkboxInput(inputId=paste0(id_onglet, "_all_1"), label=i18n$t("Conserver toutes les lignes du tableau 1"),
                                                              value = FALSE)
                                         ),
                                         column(6, align="right",
-                                               checkboxInput(inputId=paste0(id_onglet, "_all_2"), label="Conserver toutes les lignes du tableau 2",
+                                               checkboxInput(inputId=paste0(id_onglet, "_all_2"), label=i18n$t("Conserver toutes les lignes du tableau 2"),
                                                              value = FALSE)
                                         ))
                      ),
@@ -160,7 +161,7 @@ fusion_generer_syntaxe <- function(id_onglet, input, output, session){
       } else{
         commande <- ""
         afficher_message(id_onglet, 
-                         "Il faut indiquer le même nombre de variables de regroupement pour les 2 tables",
+                         i18n$t("Il faut indiquer le même nombre de variables de regroupement pour les 2 tables"),
                          "red",
                          output)
       }

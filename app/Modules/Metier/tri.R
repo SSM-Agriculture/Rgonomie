@@ -6,7 +6,7 @@ ui_tri <- function(id_onglet){
   fluidPage(
     fluidRow(
       column(12, align="center",
-             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle))
+             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle) %>% i18n$t())
       )
     ),
     
@@ -23,7 +23,7 @@ ui_tri <- function(id_onglet){
             column(6, align="right",
                    # Sélection des critères de tri
                    selectInput(inputId=paste0(id_onglet, "_choix_col"),
-                               label = "Sélectionnez les critères de tri", 
+                               label = i18n$t("Sélectionnez les critères de tri"), 
                                multiple=T,
                                choices=c())
             ),
@@ -69,8 +69,8 @@ tri_afficher_sens <- function(id_onglet, input, output, session){
       insertUI(selector = paste0("div #", id_onglet, "_ordres"),
                where="beforeEnd",
                ui=prettyToggle(inputId=paste0(id_onglet, "_", critere),
-                               label_on=HTML(paste0(critere, " <I>croissant</I>")), 
-                               label_off=HTML(paste0(critere, " <I>décroissant</I>")),
+                               label_on=HTML(paste0(critere, paste0(" <I>", i18n$t("croissant"),"</I>"))), 
+                               label_off=HTML(paste0(critere, paste0(" <I>", i18n$t("décroissant"),"</I>"))),
                                status_on="info",
                                status_off="info",
                                icon_on=icon("angle-up"),

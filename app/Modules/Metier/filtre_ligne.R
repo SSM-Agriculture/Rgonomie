@@ -1,11 +1,11 @@
 ##### Paramètres #####
 
-liste_action_num <- c("strictement supérieur à", "strictement inférieur à", "supérieur ou égal à", 
-                      "inférieur ou égal à","égal à", "différent de", "non renseigné", "renseigné")
-liste_action_char <- c("contient", "commence par", "finit par", "égal à", "différent de", "non renseigné", "renseigné")
+liste_action_num <- c(">", "<", ">=", 
+                      "<=","==", "!=", "non renseigné / missing values", "renseigné / available values")
+liste_action_char <- c("contient / contains", "commence par / starts with", "finit par / ends with", "égal à / equal to", "différent de / not equal to", "non renseigné / missing", "renseigné / available")
 
-liste_action_date <- c("strictement supérieur à", "strictement inférieur à", "supérieur ou égal à", 
-                      "inférieur ou égal à","égal à", "différent de", "non renseigné", "renseigné")
+liste_action_date <- c(">", "<", ">=", 
+                      "<=","==", "!=", "non renseigné / missing values", "renseigné / available values")
 
 
 ##### UI du filtre sur les lignes #####
@@ -15,7 +15,7 @@ ui_filtre_ligne <- function(id_onglet){
   fluidPage(
     fluidRow(
       column(12, align="center",
-             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle))
+             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle) %>% i18n$t())
       )
     ),
     
@@ -32,7 +32,7 @@ ui_filtre_ligne <- function(id_onglet){
                            column(4,
                                   align = "center",
                                   selectInput(inputId = paste0(id_onglet, "_choix_col"), 
-                                              label = "Choisissez une colonne", 
+                                              label = i18n$t("Choisissez une colonne"), 
                                               choices = c(), multiple=F)
                            ),
                            column(4,
@@ -45,14 +45,14 @@ ui_filtre_ligne <- function(id_onglet){
                            column(4,
                                   align = "center",
                                   textInput(inputId = paste0(id_onglet, "_expr"), 
-                                            label = "Expression")                 
+                                            label = i18n$t("Expression"))              
                                   
                            )
                          ),
                          fluidRow(column(12,
                                          align = "center",
                                          actionButton(inputId = paste0(id_onglet, "_nouv_condition"),
-                                                      label = "Ajouter la condition")
+                                                      label = i18n$t("Ajouter la condition"))
                          )),
                          fluidRow(column(12, align="center", 
                                          textAreaInput(inputId=paste0(id_onglet, "_condition_affichage"), label="",
@@ -61,19 +61,19 @@ ui_filtre_ligne <- function(id_onglet){
                          fluidRow(column(6,
                                          align = "center",
                                          actionButton(inputId = paste0(id_onglet, "_vider_condition"),
-                                                      label = "Effacer les conditions")
+                                                      label = i18n$t("Effacer les conditions"))
                          ),
                          column(6,
                                 align='center',
                                 actionButton(inputId = paste0(id_onglet, "_suppr_der_condition"),
-                                             label = "Effacer la dernière condition")
+                                             label = i18n$t("Effacer la dernière condition"))
                          )),
                          fluidRow(column(12,
                                          align = "center",
                                          selectInput(
-                                           inputId = paste0(id_onglet, "_logique"), label = "Les observations doivent respecter",
-                                           choices = c("toutes les conditions"=" & ",
-                                                       "au moins une condition"=" | ")
+                                           inputId = paste0(id_onglet, "_logique"), label = i18n$t("Les observations doivent respecter"),
+                                           choices = c("toutes les conditions / all conditions"=" & ",
+                                                       "au moins une condition / at least one condition"=" | ")
                                          )
                          )),
                          
@@ -150,42 +150,31 @@ filtrer_ligne_ajout_condition <- function(id_onglet, input, output, session){
       constante <- input[[paste0(id_onglet, "_expr")]]
       
       # Dans le cas d'un "contient" on utilise grepl
-      if (operateur == "contient"){
+      if (operateur == "contient / contains"){
         condition <- paste0("grepl(pattern=\"", constante, 
                             "\", x=", colonne, ", fixed=TRUE)")
         
         # Dans le cas d'un "commence par" on utliise startsWith
-      } else if (operateur == "commence par"){
+      } else if (operateur == "commence par / start with"){
         condition <- paste0("startsWith(", colonne, 
                             ", \"", constante, "\")")
         
         # Dans le cas d'un "finit par" on utilise endsWith
-      } else if (operateur == "finit par"){
+      } else if (operateur == "finit par / ends with"){
         condition <- paste0("endsWith(", colonne, 
                             ", \"", constante, "\")")
         
         # Dans le cas d'un "non renseigné" on utilise is.na
-      } else if (operateur == "non renseigné"){
+      } else if (operateur == "non renseigné / missing values"){
         condition <- paste0("is.na(", colonne, ")")
         
         # Dans le cas d'un "renseigné" on utilise !is.na
-      } else if (operateur == "renseigné"){
+      } else if (operateur == "renseigné / available values"){
         condition <- paste0("!(is.na(", colonne, "))")
         
         # Sinon c'est un opérateur binaire arithmétique
       } else{
-        if (operateur == "strictement supérieur à")
-          signe <- '>'
-        if (operateur == "strictement inférieur à")
-          signe <- '<'
-        if (operateur == "supérieur ou égal à")
-          signe <- '>='
-        if (operateur == "inférieur ou égal à")
-          signe <- '<='
-        if (operateur == "égal à")
-          signe <- '=='
-        if (operateur == "différent de")
-          signe <- '!='
+        signe <- operateur
         
         condition <- paste0("(", colonne, signe, constante, ")")
       }

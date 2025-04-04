@@ -7,7 +7,7 @@ ui_transpo <- function(id_onglet) {
     fluidRow(
       column(12,
              align = "center",
-             titlePanel(onglets %>% filter(id == id_onglet) %>% pull(libelle))
+             titlePanel(onglets %>% filter(id == id_onglet) %>% pull(libelle) %>% i18n$t())
       )
     ),
     
@@ -29,7 +29,8 @@ ui_transpo <- function(id_onglet) {
                  radioGroupButtons(
                    inputId = paste0(id_onglet, "_type"),
                    label = "",
-                   choices = c("Transposer", "Restructurer"),
+                   choices = c(
+                     "Transpose","Pivot"),
                    individual = TRUE,
                    checkIcon = list(
                      yes = tags$i(
@@ -47,7 +48,7 @@ ui_transpo <- function(id_onglet) {
         
         # Choix des paramètres si transposition partielle
         conditionalPanel(
-          condition = paste0("input.", id_onglet, "_type != 'Transposer'"),
+          condition = paste0("input.", id_onglet, "_type != 'Transpose'"),
           
           # Sens de la transposition partielle
           fluidRow(
@@ -56,10 +57,8 @@ ui_transpo <- function(id_onglet) {
                    radioGroupButtons(
                      inputId = paste0(id_onglet, "_sens"),
                      label = "",
-                     choices = c(
-                       "Lignes en colonnes" = "wider",
-                       "Colonnes en lignes" = "longer"
-                     ),
+                     choices = 
+                       c("pivot_wider","pivot_longer"),
                      individual = TRUE,
                      checkIcon = list(
                        yes = tags$i(
@@ -76,37 +75,37 @@ ui_transpo <- function(id_onglet) {
           ),
           
           # Lignes en colonnes
-          conditionalPanel(condition = paste0("input.", id_onglet, "_sens == 'wider'"),
+          conditionalPanel(condition = paste0("input.", id_onglet, "_sens == 'pivot_wider'"),
                            fluidRow(
                              column(6, align="right",
                                     selectInput(inputId=paste0(id_onglet, "_wider_names"),
-                                                label="Choisissez la colonne qui contient les noms des nouvelles colonnes",
+                                                label=i18n$t("Choisissez la colonne qui contient les noms des nouvelles colonnes"),
                                                 choices=c())
                              ),
                              column(6, align="left",
                                     selectInput(inputId=paste0(id_onglet, "_wider_values"),
-                                                label="Choisissez la colonne qui contient les valeur des nouvelles colonnes",
+                                                label=i18n$t("Choisissez la colonne qui contient les valeurs des nouvelles colonnes"),
                                                 choices=c())
                              )
                            )
           ),
           
           # Lignes en colonnes
-          conditionalPanel(condition = paste0("input.", id_onglet, "_sens == 'longer'"),
+          conditionalPanel(condition = paste0("input.", id_onglet, "_sens == 'pivot_longer'"),
                            fluidRow(
                              column(6, align="right",
                                     textInput(inputId=paste0(id_onglet, "_longer_names"),
-                                              label="Nom de la nouvelle colonne qui contient les noms")
+                                              label=i18n$t("Nom de la nouvelle colonne qui contient les noms"))
                              ),
                              column(6, align="left",
                                     textInput(inputId=paste0(id_onglet, "_longer_values"),
-                                              label="Nom de la nouvelle colonne qui contient les valeur")
+                                              label=i18n$t("Nom de la nouvelle colonne qui contient les valeurs"))
                              )
                            ),
                            fluidRow(
                              column(12, align="center",
                                     selectInput(inputId=paste0(id_onglet, "_longer_keep"),
-                                                label="Colonnes à conserver",
+                                                label=i18n$t("Colonnes à conserver"),
                                                 choices=c(),
                                                 multiple=T,
                                                 width="100%")
@@ -172,15 +171,15 @@ transpo_generer_syntaxe <- function(id_onglet, input, output, session){
     # Le nom de la table en entrée
     table_entree <- input[[paste0(id_onglet, "_env_df")]]
     
-    if (input[[paste0(id_onglet, "_type")]] == "Transposer"){
+    if (input[[paste0(id_onglet, "_type")]] == "Transpose"){
       commande <- paste0("as.data.frame(t(", table_entree,"))")
     } else{
-      if (input[[paste0(id_onglet, "_sens")]] == "wider"){
+      if (input[[paste0(id_onglet, "_sens")]] == "pivot_wider"){
         commande <- paste0(table_entree, " %>% pivot_wider(names_from=", 
                            input[[paste0(id_onglet, "_wider_names")]],
                            ", values_from=", input[[paste0(id_onglet, "_wider_values")]],
                            ")")
-      } else if (input[[paste0(id_onglet, "_sens")]] == "longer"){
+      } else if (input[[paste0(id_onglet, "_sens")]] == "pivot_longer"){
         commande <- paste0(table_entree, " %>% pivot_longer(", paste0("-", input[[paste0(id_onglet, "_longer_keep")]], collapse = ", "), 
                            ", names_to=\"", input[[paste0(id_onglet, "_longer_names")]],
                            "\", values_to=\"", input[[paste0(id_onglet, "_longer_values")]], "\")")

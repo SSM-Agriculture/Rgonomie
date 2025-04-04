@@ -12,14 +12,14 @@ ui_validation <- function(id_onglet){
         column(6, align="right",
                # Nom de la table résultat
                textInput(inputId=paste0(id_onglet, "_nom_table_resultat"), 
-                         label="Nom de la table résultat"),
+                         label=i18n$t("Nom de la table résultat")),
                htmlOutput(outputId=paste0(id_onglet, "_table_existe"))
         ),
         
         column(6, align="left", style="padding:20px;",
                # Case à cocher pour exécuter le traitement dans l'environnement
                checkboxInput(inputId=paste0(id_onglet, "_executer"),
-                             label="Exécuter la commande")
+                             label=i18n$t("Exécuter la commande"))
         )
       ),
     
@@ -27,7 +27,7 @@ ui_validation <- function(id_onglet){
     fluidRow(
       column(12, align="center",
              actionButton(inputId=paste0(id_onglet, "_valider_commande"),
-                          label="Valider")
+                          label=i18n$t("Valider"))
       )
     ),
     
@@ -72,8 +72,8 @@ server_validation <- function(id_onglet, commande, input, output, session){
   
   # On affiche une fenêtre modale pour bloquer l'utilisateur pendant le traitement
   showModal(modalDialog(
-    title = "Chargement",
-    "Veuillez patientez pendant le traitement de la commande",
+    title = i18n$t("Chargement"),
+    i18n$t("Veuillez patientez pendant le traitement de la commande"),
     size = "l"
     , easyClose = F, footer = NULL
   ))
@@ -163,7 +163,7 @@ server_validation <- function(id_onglet, commande, input, output, session){
       }
       
     } else{
-      afficher_message(id_onglet, "Pour exécuter la commande, entrez un nom pour la table résultat", "red", output)
+      afficher_message(id_onglet, i18n$t("Pour exécuter la commande, entrez un nom pour la table résultat"), "red", output)
     }
   } else{
     ##### Si pas d'exécution #####

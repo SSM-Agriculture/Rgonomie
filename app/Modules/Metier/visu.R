@@ -4,7 +4,7 @@ ui_visu <- function(id_onglet){
   fluidPage(
     fluidRow(
       column(12, align="center",
-             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle))
+             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle) %>% i18n$t())
       )
     ),
     
@@ -54,8 +54,8 @@ visu_server <- function(id_onglet, input, output, session){
       
       # On affiche une fenêtre modale pour bloquer l'utilisateur pendant le traitement
       showModal(modalDialog(
-        title = "Chargement",
-        "Veuillez patientez pendant le traitement de la commande",
+        title = i18n$t("Chargement"),
+        i18n$t("Veuillez patientez pendant le traitement de la commande"),
         size = "l"
         , easyClose = F, footer = NULL
       ))
@@ -70,12 +70,6 @@ visu_server <- function(id_onglet, input, output, session){
           ma_table[[col]] <- as.Date(ma_table[[col]], format = "%Y-%m-%d %H:%M:%S")
         }
       }
-      
-      # On affiche les informations sur les variables (colonnes)
-       # infos_var <- data.frame(Nom = names(ma_table),
-       #                         Type = sapply(ma_table, class),
-       #                         TailleMax = lapply(ma_table %>% mutate_all(as.character), nchar) %>% 
-       #                         as.data.frame() %>% summarise_all(max,na.rm=T) %>% t()) %>% ungroup()
       
       noms_colonnes <- names(ma_table)
       types_colonnes <- sapply(ma_table, class)
@@ -92,9 +86,10 @@ visu_server <- function(id_onglet, input, output, session){
         Type = types_colonnes,
         TailleMax = taille_max
       )
+      
       # Afficher les informations sur les colonnes
-       
-       output[[paste0(id_onglet, "_affiche_variables")]] <- renderDT(datatable(infos_var, rownames = FALSE))
+       output[[paste0(id_onglet, "_affiche_variables")]] <- renderDT(datatable(infos_var, rownames = FALSE,
+                                                                               colnames = c(i18n$t("Nom"), "Type",i18n$t("TailleMax"))))
 
       # On affiche la table
       output[[paste0(id_onglet, "_affiche_table")]] <- renderDT({ma_table},

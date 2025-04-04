@@ -4,7 +4,7 @@ ui_fermer <- function(id_onglet){
   fluidPage(
     fluidRow(
       column(12, align="center",
-             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle))
+             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle) %>% i18n$t())
       )
     ),
     
@@ -34,7 +34,7 @@ ui_fermer <- function(id_onglet){
             column(2),
             column(8, align="center",
                    actionButton(inputId=paste0(id_onglet, "_fermer_table"),
-                                label="Supprimer la table de votre environnement",
+                                label=i18n$t("Supprimer la table de votre environnement"),
                                 style="background-color : #FF6A74")),
             column(2)
           )
@@ -53,8 +53,8 @@ fermer_server <- function(id_onglet, input, output, session){
       
       # On affiche une fenêtre modale pour bloquer l'utilisateur pendant le traitement
       showModal(modalDialog(
-        title = "Chargement",
-        "Veuillez patientez pendant le traitement de la commande",
+        title = i18n$t("Chargement"),
+        i18n$t("Veuillez patientez pendant le traitement de la commande"),
         size = "l"
         , easyClose = F, footer = NULL
       ))
@@ -88,7 +88,8 @@ fermer_server <- function(id_onglet, input, output, session){
         TailleMax = taille_max
       )
       
-      output[[paste0(id_onglet, "_affiche_variables")]] <- renderDT(datatable(infos_var, rownames = FALSE))
+      output[[paste0(id_onglet, "_affiche_variables")]] <- renderDT(datatable(infos_var, rownames = FALSE,
+                                                                              colnames = c(i18n$t("Nom"), "Type",i18n$t("TailleMax"))))
 
       
       # Une fois le traitement fini on enlève la fenêtre modale
@@ -100,7 +101,7 @@ fermer_server <- function(id_onglet, input, output, session){
   observeEvent(input[[paste0(id_onglet, "_fermer_table")]],{
     
     showModal(modalDialog(
-      title = "Fermer la table",
+      title = i18n$t("Fermer la table"),
       "Etes-vous sûr de vouloir supprimer cette table de votre environement ?",
       size = "l"
       , easyClose = F, footer = tagList(

@@ -3,15 +3,10 @@ server <- function(input, output, session){
   # Affichage du pop-up de bienvenue lors du premier chargement de l'application
   observe({
     shinyalert(
-      title = "Bienvenue dans Rgonomie !",
+      title = "Rgonomie",
       text =HTML(
         paste(
-          "<strong>", 
-          "<a href='https://github.com/SSM-Agriculture/Rgonomie' target='_blank'>Voir le code sur GitHub</a>",
-          "</strong>",
-          "<br><br>",  
-          "Cette application en ligne permet aux utilisateurs novices en R",
-          "d'utiliser ce langage ",
+          "🇫🇷 Cette application en ligne permet aux utilisateurs novices en R d'utiliser ce langage ",
           "<strong>",
           "via une interface graphique ",
           "</strong>",
@@ -20,8 +15,19 @@ server <- function(input, output, session){
           "réaliser des traitements statistiques de base.",
           "</strong>",
           "<br><br>",  
-          actionBttn("consulter_a_propos", "À propos de l'application", 
-                     size = "xs", icon = icon("book-open"))
+          "🇬🇧  / 🇺🇸 This online application enables users new to R to use this language ",
+          "<strong>",
+          "via a graphical interface ",
+          "</strong>",
+          "to work with data files and ",
+          "<strong>",
+          "perform basic statistical processing.",
+          "</strong>",
+          "<br>", 
+          "<a href='https://github.com/SSM-Agriculture/Rgonomie' target='_blank' style='text-decoration: none;'><img src='GitHub-Mark.png' width='30' style='vertical-align: middle; margin-right: 5px;'></a>",
+          "<br>", 
+          actionBttn("consulter_a_propos", "Documentation", 
+                     icon = icon("book-open"))
         )
       ),
       imageUrl = "logo_rgonomie_transparent.png",
@@ -32,7 +38,7 @@ server <- function(input, output, session){
       showConfirmButton = TRUE,
       closeOnClickOutside = TRUE,
       confirmButtonCol = "#008000",
-      confirmButtonText = "C'est parti ! 🚀"
+      confirmButtonText = "C'est parti / Let's go ! 🚀"
     )
   })
   
@@ -41,6 +47,10 @@ server <- function(input, output, session){
     updateTabItems(session,
                    inputId = "menu",
                    selected = "propos")
+  })
+  
+  observeEvent(input$selected_language, {
+    update_lang(input$selected_language)
   })
   
   ### Ligne de code qui permet de stopper l'app Shiny automatiquement qd on ferme la fenetre de l'app

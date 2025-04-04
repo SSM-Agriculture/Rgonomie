@@ -31,7 +31,7 @@ ui_tableaux <- function(id_onglet){
   fluidPage(
     fluidRow(
       column(12, align="center",
-             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle))
+             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle) %>% i18n$t())
       )
     ),
     
@@ -50,21 +50,21 @@ ui_tableaux <- function(id_onglet){
                                column(5,
                                       align = "center",
                                       selectInput(inputId=paste0(id_onglet, "_ligne"), 
-                                                  label="Indiquer les variables de regroupement à placer en ligne",
+                                                  label=i18n$t("Indiquer les variables de regroupement à placer en ligne"),
                                                   choices=c(),
                                                   multiple=T)
                                ),
                                column(5,
                                       align = "center",
                                       selectInput(inputId=paste0(id_onglet, "_col"),
-                                                  label="Indiquer les variables de regroupement à placer en colonne",
+                                                  label=i18n$t("Indiquer les variables de regroupement à placer en colonne"),
                                                   choices=c(),
                                                   multiple=T)
                                ),
                                column(2,
                                       align = "center",
                                       numericInput(inputId=paste0(id_onglet, "_digits"),
-                                                   label="Indiquer le nombre de décimales à afficher",
+                                                   label=i18n$t("Indiquer le nombre de décimales à afficher"),
                                                    value = 1,
                                                    min = 0,
                                                    max = 10)
@@ -74,12 +74,12 @@ ui_tableaux <- function(id_onglet){
                                column(5,
                                       align = "center",
                                       checkboxInput(inputId=paste0(id_onglet, "_form_check_ligne"),
-                                                    label="Ajouter la valeur globale du regroupement")
+                                                    label=i18n$t("Ajouter la valeur globale du regroupement"))
                                ),
                                column(5,
                                       align = "center",
                                       checkboxInput(inputId=paste0(id_onglet, "_form_check_col"),
-                                                    label="Ajouter la valeur globale du regroupement")
+                                                    label=i18n$t("Ajouter la valeur globale du regroupement"))
                                )
                              ),
                              
@@ -91,7 +91,7 @@ ui_tableaux <- function(id_onglet){
                          fluidRow(
                            column(12,
                                   textInput(inputId=paste0(id_onglet, "_titre"),
-                                            label="Saisir le titre du tableau")
+                                            label=i18n$t("Saisir le titre du tableau"))
                            )
                          ),
                          
@@ -100,11 +100,11 @@ ui_tableaux <- function(id_onglet){
                          fluidRow(
                            column(6, align="right", style="padding:25px",
                                   actionButton(inputId=paste0(id_onglet, "_suppr_form"),
-                                               label="Supprimer les calculs sélectionnés")
+                                               label=i18n$t("Supprimer les calculs sélectionnés"))
                            ),
                            column(6, align="left", style="padding:25px",
                                   actionButton(inputId=paste0(id_onglet, "_add_form"),
-                                               label="Ajouter un calcul")
+                                               label=i18n$t("Ajouter un calcul"))
                            )
                          ),
                          
@@ -120,8 +120,8 @@ ui_tableaux <- function(id_onglet){
                            # Bouton pour enregistrer une table
                            column(12, align="center",
                                   shinySaveButton(id=paste0(id_onglet, "_dl_table"),
-                                                  label="Enregistrer la table", 
-                                                  title="Enregistrer sous", 
+                                                  label=i18n$t("Enregistrer la table"), 
+                                                  title=i18n$t("Enregistrer sous"), 
                                                   filetype=list('hidden_mime_type'=c("")))
                            )
                            
@@ -145,30 +145,30 @@ tableaux_form<- function(id_onglet, liste_col, nb_form){
       fluidRow(
         column(2,
                selectInput(inputId = paste0(id_onglet, "_form_var", nb_form), 
-                           label = "Indiquer la variable à agréger",
+                           label = i18n$t("Indiquer la variable à agréger"),
                            choices = liste_col, multiple = F)
         ),
         column(3,
                textInput(inputId=paste0(id_onglet, "_form_nouv", nb_form),
-                         label="Saisir le libellé de la variable à agréger")
+                         label=i18n$t("Saisir le libellé de la variable à agréger"))
         ),
         column(3,
                selectInput(
                  inputId = paste0(id_onglet, "_form_func", nb_form),
-                 label = "Indiquer la ou les fonction(s) à appliquer",
+                 label = i18n$t("Indiquer la ou les fonction(s) à appliquer"),
                  choices = names(liste_noms_fonctions_tab),
                  multiple = T
                )
         ),
         column(3,
                selectInput(inputId=paste0(id_onglet, "_coef", nb_form),
-                           label="Indiquer le coefficient de pondération",
-                           choices=c("pas de pondération", liste_col),
-                           selected="pas de pondération",
+                           label=i18n$t("Indiquer le coefficient de pondération"),
+                           choices=c("pas de pondération / no weight", liste_col),
+                           selected="pas de pondération / no weight",
                            multiple=F)
         ),
         column(1, style = "padding:25px;",
-               checkboxInput(inputId=paste0(id_onglet, "_form_check", nb_form), label="Supprimer")
+               checkboxInput(inputId=paste0(id_onglet, "_form_check", nb_form), label=i18n$t("Supprimer"))
         )
       )
   )
@@ -228,21 +228,21 @@ tableaux_reinit_param <- function(id_onglet, input, output, session){
                         column(5,
                                align = "center",
                                selectInput(inputId=paste0(id_onglet, "_ligne"), 
-                                           label="Indiquer les variables de regroupement à placer en ligne",
+                                           label=i18n$t("Indiquer les variables de regroupement à placer en ligne"),
                                            choices=col_charac,
                                            multiple=T)
                         ),
                         column(5,
                                align = "center",
                                selectInput(inputId=paste0(id_onglet, "_col"),
-                                           label="Indiquer les variables de regroupement à placer en colonne",
+                                           label=i18n$t("Indiquer les variables de regroupement à placer en colonne"),
                                            choices=col_charac,
                                            multiple=T)
                         ),
                         column(2,
                                align = "center",
                                numericInput(inputId=paste0(id_onglet, "_digits"),
-                                            label="Indiquer le nombre de décimales à afficher",
+                                            label=i18n$t("Indiquer le nombre de décimales à afficher"),
                                             value = 1,
                                             min = 0,
                                             max = 10)
@@ -252,12 +252,12 @@ tableaux_reinit_param <- function(id_onglet, input, output, session){
                         column(5,
                                align = "center",
                                checkboxInput(inputId=paste0(id_onglet, "_form_check_ligne"),
-                                             label="Ajouter la valeur globale du regroupement")
+                                             label=i18n$t("Ajouter la valeur globale du regroupement"))
                         ),
                         column(5,
                                align = "center",
                                checkboxInput(inputId=paste0(id_onglet, "_form_check_col"),
-                                             label="Ajouter la valeur globale du regroupement")
+                                             label=i18n$t("Ajouter la valeur globale du regroupement"))
                         )
                       ),
                       
@@ -353,7 +353,7 @@ tableaux_generer_syntaxe <- function(id_onglet, input, output, session){
       )
       
       #### Cas sans pondération
-      if (coef_demander == "pas de pondération") {
+      if (coef_demander == "pas de pondération / no weight") {
         
         calcul_temp[i] <- paste0("(", nouveauNom, input[[paste0(id_onglet, "_form_var", i)]], ") * (",
                                  paste0(liste_noms_fonctions_tab[input[[paste0(id_onglet, "_form_func", i)]]],

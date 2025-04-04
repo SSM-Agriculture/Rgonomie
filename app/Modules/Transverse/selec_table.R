@@ -12,7 +12,7 @@ ui_selec_table <- function(id_onglet){
     fluidRow(
       column(12, align="center",
              selectInput(inputId=paste0(id_onglet,"_env_df"),
-                         label="Sélectionnez la table",
+                         label=i18n$t("Sélectionnez la table"),
                          choices=c("", liste_df))
       )
     )

@@ -368,3 +368,9 @@ td {
   border-color : #70AD27 !important; 
   box-shadow : 0 0 2px #70AD27 !important;
 }
+
+
+/************** Boutons **************/
+#consulter_a_propos {
+  background-color: #70AD27 !important;
+}

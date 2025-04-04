@@ -3,34 +3,29 @@
 
 # Correspondance des noms de fonctions Rgonomie vers noms de fonctions R
 liste_noms_fonctions <- c(
-  "Effectif" = "",
-  "Effectif pondéré" = "",
-  "Somme" = "sum",
-  "Somme pondérée" = "sum",
-  "Moyenne" = "mean",
-  "Moyenne pondérée" = "mean",
-  "Médiane" = "median",
-  "Médiane pondérée" = "median",
-  "Ecart-type" = "sd",
+  "Effectif / Count" = "",
+  "Effectif pondéré / Weighted count" = "",
+  "Somme / Sum" = "sum",
+  "Somme pondérée / Weighted sum" = "sum",
+  "Moyenne / Mean" = "mean",
+  "Moyenne pondérée / Weighted mean" = "mean",
+  "Médiane / Median" = "median",
+  "Médiane pondérée / Weighted median" = "median",
+  "Ecart-type / Standard deviation" = "sd",
   "Variance" = "var",
   "Maximum" = "max",
-  "Maximum pondéré" = "max",
+  "Maximum pondéré / Weighted maximum" = "max",
   "Minimum" = "min", 
-  "Minimum pondéré" = "min",
-  "Premier" = "first",
-  "Dernier" = "last")
-# "5eme Centile" = "quantile",
-# "25eme Centile" = "quantile",
-# "75eme Centile" = "quantile",
-# "95ème Centile" = "quantile",
-# "99ème Centile" = "quantile")
+  "Minimum pondéré Weighted minimum" = "min",
+  "Premier / First" = "first",
+  "Dernier / Last" = "last")
 
 ui_agreg <- function(id_onglet){
   # Création page et titre
   fluidPage(
     fluidRow(
       column(12, align="center",
-             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle))
+             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle) %>% i18n$t())
       )
     ),
     
@@ -49,14 +44,14 @@ ui_agreg <- function(id_onglet){
                                column(6,
                                       align = "center",
                                       selectInput(inputId=paste0(id_onglet, "_group"), 
-                                                  label="Indiquer les variables de regroupement",
+                                                  label=i18n$t("Indiquer les variables de regroupement"),
                                                   choices=c(),
                                                   multiple=T)
                                ),
                                column(6,
                                       align = "center",
                                       selectInput(inputId=paste0(id_onglet, "_coef"),
-                                                  label="Indiquer le coefficient de pondération",
+                                                  label=i18n$t("Indiquer le coefficient de pondération"),
                                                   choices=c(),
                                                   multiple=F)
                                )
@@ -71,11 +66,11 @@ ui_agreg <- function(id_onglet){
                          fluidRow(
                            column(6, align="right", style="padding:25px",
                                   actionButton(inputId=paste0(id_onglet, "_suppr_form"),
-                                               label="Supprimer les calculs sélectionnés")
+                                               label=i18n$t("Supprimer les calculs sélectionnés"))
                            ),
                            column(6, align="left", style="padding:25px",
                                   actionButton(inputId=paste0(id_onglet, "_add_form"),
-                                               label="Ajouter un calcul")
+                                               label=i18n$t("Ajouter un calcul"))
                            )
                          ),
                          
@@ -101,23 +96,23 @@ agreg_form<- function(id_onglet, liste_col, nb_form){
       fluidRow(
         column(3,
                textInput(inputId=paste0(id_onglet, "_form_nouv", nb_form),
-                         label="Entrez le nom de la nouvelle variable")
+                         label=i18n$t("Entrez le nom de la nouvelle variable"))
         ),
         column(4,
                selectInput(inputId = paste0(id_onglet, "_form_var", nb_form), 
-                           label = "Indiquer la variable à agréger",
+                           label = i18n$t("Indiquer la variable à agréger"),
                            choices = liste_col, multiple = F)
         ),
         column(3,
                selectInput(
                  inputId = paste0(id_onglet, "_form_func", nb_form),
-                 label = "Indiquer la fonction à appliquer",
+                 label = i18n$t("Indiquer la fonction à appliquer"),
                  choices = names(liste_noms_fonctions),
                  multiple = F
                )
         ),
         column(2, style = "padding:25px;",
-               checkboxInput(inputId=paste0(id_onglet, "_form_check", nb_form), label="Supprimer")
+               checkboxInput(inputId=paste0(id_onglet, "_form_check", nb_form), label=i18n$t("Supprimer"))
         )
       )
   )
@@ -142,8 +137,8 @@ agreg_reinit_param <- function(id_onglet, input, output, session){
       )
       updateSelectInput(session,
                         inputId = paste0(id_onglet, "_coef"),
-                        choices = c("pas de pondération", names(get(nom_table))),
-                        selected="pas de pondération"
+                        choices = c("pas de pondération / no weight", names(get(nom_table))),
+                        selected="pas de pondération / no weight"
       )
       
       # On supprime les ui du formulaire
@@ -260,7 +255,7 @@ agreg_generer_syntaxe <- function(id_onglet, input, output, session){
         
         # Cas de données pondérées avec les fonctions weighted
         if ((ma_fonction %in% c("Moyenne pondérée", "Médiane pondérée"))
-            & (coef != "pas de pondération")){
+            & (coef != "pas de pondération / no weight")){
           fonctions <- c(fonctions, paste0(mon_resultat, "=", "weighted.",
                                            liste_noms_fonctions[ma_fonction], "(",
                                            ma_variable, ", ",
@@ -268,7 +263,7 @@ agreg_generer_syntaxe <- function(id_onglet, input, output, session){
           
           # Cas de données pondérées avec sum, max ou min (pas de weighted, il faut multiplier par le coef)
         } else if ((ma_fonction %in% c("Maximum pondéré", "Minimum pondéré", "Somme pondérée")) 
-                   & (coef != "pas de pondération")){
+                   & (coef != "pas de pondération / no weight")){
           fonctions <- c(fonctions, paste0(mon_resultat, "=",
                                            liste_noms_fonctions[ma_fonction], "(",
                                            ma_variable, " * ", coef,
@@ -279,11 +274,11 @@ agreg_generer_syntaxe <- function(id_onglet, input, output, session){
           fonctions <- c(fonctions, paste0(mon_resultat, "=n()"))
           
           # Effectif pondéré
-        } else if ((ma_fonction == "Effectif pondéré") & (coef != "pas de pondération")){
+        } else if ((ma_fonction == "Effectif pondéré") & (coef != "pas de pondération / no weight")){
           fonctions <- c(fonctions, paste0(mon_resultat, "=sum(", coef, gestion_na, ")"))
           
           # Cas de fonctions non pondérées
-        } else {#if (coef == "pas de pondération"){
+        } else {
           fonctions <- c(fonctions, paste0(mon_resultat, "=",
                                            liste_noms_fonctions[ma_fonction], "(",
                                            ma_variable, gestion_na, ")"))

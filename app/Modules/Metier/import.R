@@ -12,7 +12,7 @@ ui_import <- function(id_onglet){
                        margins = c("50%","50%")
       ),
       column(12, align="center",
-             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle))
+             titlePanel(onglets %>% filter(id==id_onglet) %>% pull(libelle) %>% i18n$t())
       )
     ),
     
@@ -22,7 +22,7 @@ ui_import <- function(id_onglet){
     fluidRow(
       column(12, align="center",
              fileInput(inputId=paste0(id_onglet, "_poste"), 
-                       label="Choisir un fichier", buttonLabel = "Parcourir",
+                       label= i18n$t("Choisir un fichier"), buttonLabel = i18n$t("Parcourir"),
                        accept = list(".csv",".txt",".sas7bdat",".sav", 
                                      ".rdata", ".rds", ".xls", ".xlsx", ".ods", ".parquet"))
       )
@@ -56,7 +56,7 @@ ui_import <- function(id_onglet){
                          fluidRow(
                            column(12, align="center",
                                   textInput(inputId=paste0(id_onglet, "_nom_table_resultat"), 
-                                            label="Nom de la table résultat"),
+                                            label=i18n$t("Nom de la table résultat")),
                                   htmlOutput(outputId=paste0(id_onglet, "_table_existe"))
                            )
                          ),
@@ -65,7 +65,7 @@ ui_import <- function(id_onglet){
                          fluidRow(
                            column(12, align="center",
                                   actionButton(inputId=paste0(id_onglet, "_valider_commande"),
-                                               label="Valider")
+                                               label=i18n$t("Valider"))
                            )
                            
                          ),
@@ -128,7 +128,7 @@ import_fichier_selec <- function(id_onglet, input, output, session){
       if (extension %in% c("csv", "txt", "sav", "sas7bdat", "rdata", "rds", "xls", "xlsx", "ods", "parquet")){
         
         updateTextInput(session = session, inputId = paste0(id_onglet, "_extension"),
-                        value=paste0("Format détecté : ", extension))
+                        value=paste0(i18n$t("Format détecté : "), extension))
         
         # On affiche la pop-up d'ouverture de fichier contenant les paramètres
         showModal(
@@ -142,13 +142,13 @@ import_fichier_selec <- function(id_onglet, input, output, session){
             fluidRow(
               # choix encodage (csv et sas uniquement)
               column(6,
-                     selectInput(inputId=paste0(id_onglet, "_fic_encodage"), label="Encodage", 
+                     selectInput(inputId=paste0(id_onglet, "_fic_encodage"), label=i18n$t("Encodage"), 
                                  choices=c("utf-8", "iso-8859-1"))
               ),
               # indicateur en-tête de fichier (csv uniquement)
               column(6, aligne="left", style="padding:25px;", 
                      checkboxInput(inputId=paste0(id_onglet, "_fic_entete"),
-                                   label="Le fichier contient les noms de colonne",
+                                   label=i18n$t("Le fichier contient les noms de colonne"),
                                    value=T)
               )
             ),
@@ -156,7 +156,7 @@ import_fichier_selec <- function(id_onglet, input, output, session){
             fluidRow(
               # choix séparateur de champ (csv uniquement)
               column(5,
-                     selectInput(inputId=paste0(id_onglet, "_fic_sep"), label="Séparateur de champ", 
+                     selectInput(inputId=paste0(id_onglet, "_fic_sep"), label=i18n$t("Séparateur de champ"), 
                                  choices=c(";", ",", "|", "autre"))
                      
               ),
@@ -170,12 +170,12 @@ import_fichier_selec <- function(id_onglet, input, output, session){
             fluidRow(
               # choix séparateur décimal (csv uniquement)
               column(5,
-                     selectInput(inputId=paste0(id_onglet, "_fic_dec"), label="Séparateur décimal", 
+                     selectInput(inputId=paste0(id_onglet, "_fic_dec"), label=i18n$t("Séparateur décimal"), 
                                  choices=c(".",","))
               ),
               # choix séparateur de texte (csv uniquement)
               column(5,
-                     selectInput(inputId=paste0(id_onglet, "_fic_quote"), label="Séparateur de texte", 
+                     selectInput(inputId=paste0(id_onglet, "_fic_quote"), label=i18n$t("Séparateur de texte"), 
                                  choices=c("aucun","'", '"'), selected='"')
               )
             ),
@@ -183,14 +183,14 @@ import_fichier_selec <- function(id_onglet, input, output, session){
               # choix commentaire caractère (csv uniquement)
               column(5,
                      textInput(inputId=paste0(id_onglet, "_fic_carcom"), 
-                               label="Caractère commentaire")
+                               label=i18n$t("Caractère commentaire"))
               )
             ),
             
             # Bouton pour valider les paramètres
             fluidRow(column(12, align="center",
                             actionButton(inputId=paste0(id_onglet, "_valid_param"),
-                                         label="Valider")
+                                         label=i18n$t("Valider"))
             )
             ),
             
@@ -201,7 +201,7 @@ import_fichier_selec <- function(id_onglet, input, output, session){
         )
         
         # On affiche l'extension
-        output[[paste0(id_onglet, "_fic_extension")]] <- renderUI(HTML(paste0("<B>Format détecté : ", 
+        output[[paste0(id_onglet, "_fic_extension")]] <- renderUI(HTML(paste0("<B>",i18n$t("Format détecté : "), 
                                                                               extension, 
                                                                               "</B>")))
         
@@ -246,7 +246,7 @@ import_fichier_selec <- function(id_onglet, input, output, session){
           shinyjs::hide(paste0(id_onglet, "_fic_carcom"))
         } else{
           # Si l'extension n'est pas reconnu, on affiche un message
-          afficher_message(id_onglet, "Format de fichier non reconnu", "red", output)
+          afficher_message(id_onglet, i18n$t("Format de fichier non reconnu"), "red", output)
         }
       }
     }, ignoreInit = TRUE,)
@@ -318,10 +318,10 @@ import_nom_colonnes <- function(id_onglet, input, output, session){
                             column(6, align="left",
                                    radioGroupButtons(inputId=paste0(id_onglet, "_", colonne),
                                                      label="",
-                                                     choices=c("Numérique"="numeric",
-                                                               "Caractères"="character",
-                                                               "Booléen"="logical",
-                                                               "Date"="date"),
+                                                     choices=c("numeric",
+                                                               "character",
+                                                               "logical",
+                                                               "date"),
                                                      selected=types_colonnes[colonne]))
                    )
                  })
@@ -365,8 +365,8 @@ import_valider <- function(id_onglet, input, output, session){
     # Si la taille du fichier dépasse 80 Mo on empêche l'import
     if (file_size > 80) {
       showModal(modalDialog(
-        title = "Erreur",
-        "Pour des raisons pédagogiques, le chargement des fichiers est limité à 80 Mo dans Rgonomie.",
+        title = i18n$t("Erreur"),
+        i18n$t("Pour des raisons pédagogiques, le chargement des fichiers est limité à 80 Mo dans Rgonomie."),
         easyClose = TRUE,
         footer = NULL
       ))
@@ -378,8 +378,8 @@ import_valider <- function(id_onglet, input, output, session){
     if (table_sortie != ""){
       # On affiche une fenêtre modale pour bloquer l'utilisateur pendant le traitement
       showModal(modalDialog(
-        title = "Chargement",
-        "Veuillez patientez pendant le traitement de la commande",
+        title = i18n$t("Chargement"),
+        i18n$t("Veuillez patientez pendant le traitement de la commande"),
         size = "l"
         , easyClose = F, footer = NULL
       ))
