@@ -128,7 +128,7 @@ import_fichier_selec <- function(id_onglet, input, output, session){
       if (extension %in% c("csv", "txt", "sav", "sas7bdat", "rdata", "rds", "xls", "xlsx", "ods", "parquet")){
         
         updateTextInput(session = session, inputId = paste0(id_onglet, "_extension"),
-                        value=paste0("Format détecté : ", extension))
+                        value=paste0(i18n$t("Format détecté : "), extension))
         
         # On affiche la pop-up d'ouverture de fichier contenant les paramètres
         showModal(
@@ -201,7 +201,7 @@ import_fichier_selec <- function(id_onglet, input, output, session){
         )
         
         # On affiche l'extension
-        output[[paste0(id_onglet, "_fic_extension")]] <- renderUI(HTML(paste0("<B>Format détecté : ", 
+        output[[paste0(id_onglet, "_fic_extension")]] <- renderUI(HTML(paste0("<B>",i18n$t("Format détecté : "), 
                                                                               extension, 
                                                                               "</B>")))
         
@@ -379,7 +379,7 @@ import_valider <- function(id_onglet, input, output, session){
       # On affiche une fenêtre modale pour bloquer l'utilisateur pendant le traitement
       showModal(modalDialog(
         title = "Chargement",
-        "Veuillez patientez pendant le traitement de la commande",
+        i18n$t("Veuillez patientez pendant le traitement de la commande"),
         size = "l"
         , easyClose = F, footer = NULL
       ))

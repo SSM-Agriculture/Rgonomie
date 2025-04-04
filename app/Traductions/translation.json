@@ -251,6 +251,14 @@
       "en": "Execute the command"
     },
     {
+      "fr": "Format détecté : ",
+      "en": "Detected format : "
+    },
+    {
+      "fr": "Veuillez patientez pendant le traitement de la commande",
+      "en": "Please wait while your order is being processed"
+    },
+    {
       "fr": "Présentation",
       "en": "Presentation"
     },
