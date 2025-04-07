@@ -419,9 +419,6 @@ dl_tab <- function(id_onglet, input, output, session){
   
   observeEvent(input[[paste0(id_onglet, "_dl_table")]],{
     
-    # On trace l'utilisation de l'onglet
-    ecrire_log(id_onglet)
-    
     # On récupère le chemin et le nom du fichier indiqué par l'utilisateur
     fileinfo <- parseSavePath(roots=rep_racine, input[[paste0(id_onglet, "_dl_table")]])
     

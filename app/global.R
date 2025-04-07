@@ -46,20 +46,8 @@ source("Modules/Transverse/valider_traitement.R")
 source("Modules/Transverse/afficher_message.R")
 source("Modules/Transverse/table_existe.R")
 source("Modules/Transverse/reinit_param.R")
-source("Modules/Transverse/ecrire_log.R")
 source("Modules/Transverse/df_env.R")
 
-
-##### On trace dans la log le démarrage d'Rgonomie par l'utilisateur courant #####
-ecrire_log("connexion")
-
-
-##### Création historique des commandes pour la session #####
-write_lines(paste0("# Rgonomie : commandes générées le ", 
-                   format(Sys.time(), format = "%d/%m/%Y"),
-                   "\n"),
-            paste0("Suivi_Utilisateurs/historique.log"),
-            append = F)
 
 # Valeur réactive contenant le nombre de lignes
 reacVal <- reactiveValues(nb_form = c()) 
@@ -108,9 +96,6 @@ table_options(CSS = "<style>
 
 ##### Routine qui s'exécute à l'arrêt de l'application #####
 onStop(function() {
-  
-  # On trace dans la log la fermeture par l'utilisateur
-  ecrire_log("déconnexion")
   
   # On supprime les objets qui n'étaient pas présents au lancement du programme
   rm(list=ls(envir = .GlobalEnv)[!(ls(envir = .GlobalEnv) %in% env_debut)], envir = .GlobalEnv)

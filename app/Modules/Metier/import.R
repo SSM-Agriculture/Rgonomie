@@ -356,9 +356,6 @@ import_nom_colonnes <- function(id_onglet, input, output, session){
 import_valider <- function(id_onglet, input, output, session){
   observeEvent(table_sortie <- input[[paste0(id_onglet, "_valider_commande")]],{
     
-    # On trace l'utilisation de l'onglet
-    ecrire_log(id_onglet)
-    
     # Calcul de la taille du fichier en entrée
     file_size <- file.info(chemin_fichier)$size / (1024 * 1024) # Taille en Mo
     

@@ -111,9 +111,6 @@ fermer_server <- function(id_onglet, input, output, session){
   })
   observeEvent(input$oui, {
     
-    # On trace l'utilisation de l'onglet
-    ecrire_log(id_onglet)
-    
     remove(list = input[[paste0(id_onglet, "_env_df")]], envir = .GlobalEnv)
     env_debut <<- env_debut[!(env_debut %in% c(input[[paste0(id_onglet, "_env_df")]]))]
     refresh_selec_table("fermer",input, output, session)

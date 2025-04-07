@@ -47,9 +47,6 @@ visu_server <- function(id_onglet, input, output, session){
   
   observeEvent(input[[paste0(id_onglet, "_env_df")]],{
     
-    # On trace l'utilisation de l'onglet
-    ecrire_log(id_onglet)
-    
     if (input[[paste0(id_onglet, "_env_df")]] != ""){
       
       # On affiche une fenêtre modale pour bloquer l'utilisateur pendant le traitement

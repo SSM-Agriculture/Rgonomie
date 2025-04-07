@@ -94,9 +94,6 @@ dl_poste <- function(id_onglet, input){
     # Choix de le fonction d'écriture en fonction du format de sortie
     content=function(file){
       
-      # On trace l'utilisation de l'onglet
-      ecrire_log(id_onglet)
-      
       if (input[[paste0(id_onglet, "_format_fichier")]] == "rds"){
         saveRDS(get(input[[paste0(id_onglet, "_env_df")]]), file)
       } else if (input[[paste0(id_onglet, "_format_fichier")]] == "xls" |
