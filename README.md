@@ -5,7 +5,7 @@ Rgonomie <img src="app/www/logo_rgonomie_transparent.png" width=110 align="right
 
 :uk: / :us: This project hosts the source code for the Shiny Rgonomie application from [MASA](https://agreste.agriculture.gouv.fr/agreste-web/).
 
-## Objectif
+## Motivation
 
 :fr:  
 Cette application a été développé au sein du Service de la Statistique et de la Prospective (SSP) du [Ministère de l'Agriculture et de la Souveraineté Alimentaire](https://agriculture.gouv.fr/).
@@ -28,9 +28,9 @@ For more advanced statistical processing or more complex data manipulation, it i
 
 Users wishing to learn more can consult [on this site](https://ssm-agriculture.github.io/site-formations-R/).
 
-## Mode d'emploi
+## Guide d'utilisation / User guide
 
-TO DO 
+TO DO ...
 
 ## Contributions
 
