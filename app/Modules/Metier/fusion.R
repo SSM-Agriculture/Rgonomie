@@ -171,7 +171,7 @@ fusion_generer_syntaxe <- function(id_onglet, input, output, session){
     if (commande != ""){
       server_validation("fusion", commande, input, output, session)
     }
-    # Réaffichage de la bale fusinnée
+    # Réaffichage de la BAL fusionnée
     updateSelectInput(session=session, inputId=paste0(id_onglet, "_env_df_1"), choices = df_env())
     updateSelectInput(session=session, inputId=paste0(id_onglet, "_env_df_2"), choices = df_env())
   })
