@@ -47,6 +47,15 @@ source("Modules/Transverse/table_existe.R")
 source("Modules/Transverse/reinit_param.R")
 source("Modules/Transverse/df_env.R")
 
+##### On trace dans la log le démarrage d'Rgonomie par l'utilisateur courant #####
+
+
+##### Création historique des commandes pour la session #####
+write_lines(paste0("# Rgonomie : ", 
+                   format(Sys.time(), format = "%d/%m/%Y"),
+                   "\n"),
+            paste0("Suivi_Utilisateurs/historique.log"),
+            append = F)
 
 # Valeur réactive contenant le nombre de lignes
 reacVal <- reactiveValues(nb_form = c()) 

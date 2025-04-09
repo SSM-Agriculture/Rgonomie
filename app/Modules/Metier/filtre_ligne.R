@@ -174,7 +174,23 @@ filtrer_ligne_ajout_condition <- function(id_onglet, input, output, session){
         
         # Sinon c'est un opérateur binaire arithmétique
       } else{
-        signe <- operateur
+        if (operateur == "égal à / equal to")
+          signe <- '=='
+        if (operateur == "différent de / not equal to")
+          signe <- '!='
+        if (operateur == ">")
+          signe <- '>'
+        if (operateur == "<")
+          signe <- '<'
+        if (operateur == ">=")
+          signe <- '>='
+        if (operateur == "<=")
+          signe <- '<='
+        if (operateur == "==")
+          signe <- '=='
+        if (operateur == "!=")
+          signe <- '!='
+
         
         condition <- paste0("(", colonne, signe, constante, ")")
       }

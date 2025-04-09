@@ -65,6 +65,21 @@ server <- function(input, output, session){
     stopApp()
   })
   
+  # Bouton téléchargement historique
+  output$telecharger_histo <- downloadHandler(
+    filename = function() {
+      paste0("rgonomie_pgm_", Sys.Date(), ".R")
+    },
+    content = function(file) {
+      # On lit le contenu du fichier log
+      log_content <- read_lines("Suivi_Utilisateurs/historique.log")
+      
+      # On l'écrit dans le fichier temporaire fourni par Shiny
+      write_lines(log_content, file)
+    }
+  )
+  
+  
   ## Fonctionnalités spécifiques
   # Import
   shinyFileChoose(input, "import_cerise", root = rep_racine,

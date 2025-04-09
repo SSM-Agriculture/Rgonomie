@@ -66,6 +66,7 @@ ui_validation <- function(id_onglet){
 
 server_validation <- function(id_onglet, commande, input, output, session){
   
+  
   # On affiche une fenêtre modale pour bloquer l'utilisateur pendant le traitement
   showModal(modalDialog(
     title = i18n$t("Chargement"),
@@ -131,6 +132,12 @@ server_validation <- function(id_onglet, commande, input, output, session){
         # On met à jour les listes des entrants
         refresh_selec_table(id_onglet, input, output, session)
         
+        
+        # On enregistre la commande dans l'historique
+        write_lines(x = paste0(commande_affichee, "\n"), 
+                    file = "Suivi_Utilisateurs/historique.log",
+                    append = T)
+        
         # On affiche la table résultat
         if (id_onglet == "tableaux") {
           output[[paste0(id_onglet, "_affiche_table")]] <-  renderUI(html.tabular(get(table_sortie)))
@@ -195,6 +202,11 @@ server_validation <- function(id_onglet, commande, input, output, session){
         # Et on affiche la commande avec le warning
         afficher_message(id_onglet, c(commande_affichee, resultat_commande[2]),c("blue", "orange"), output)
       }
+      
+      # On enregistre la commande dans l'historique
+      write_lines(x = paste0(commande_affichee, "\n"), 
+                  file = "Suivi_Utilisateurs/historique.log",
+                  append = T)
       
       tab <<- commande_affichee
       # On affiche la table résultat

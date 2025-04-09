@@ -8,7 +8,23 @@ ui <- dashboardPage(
     
     ##### Menu déroulant dans l'en-tête #####
     
-    # Nom de la personne connectée
+    # Bouton de téléchargement de l'historique
+    tags$li(
+      class = "dropdown",
+      style = "display: flex; align-items: center; height: 75px; margin-right: 20px;",
+      tags$div(
+        downloadButton("telecharger_histo", 
+                       "R code")
+      )
+    ),
+    
+    # Espace vide
+    tags$li(
+      class = "dropdown",
+      style = "width: 30px;"  # Espace entre les deux boutons
+    ),
+    
+    # Choix de la langue
     tags$li(
       class = "dropdown",
       tags$div(
@@ -43,7 +59,9 @@ ui <- dashboardPage(
     
     # Icône quitter
     tags$li(class = "dropdown",
-            tags$div(class="quit", actionButton(inputId = "quitter", 
+            tags$div(class="quit", 
+                     style = "display: flex; align-items: center; height: 75px;",
+                     actionButton(inputId = "quitter", 
                                                 label = NULL, 
                                                 icon = icon("power-off", class="fas fa-power-off"))
             )
@@ -75,6 +93,7 @@ ui <- dashboardPage(
       lapply(1:nrow(onglets), function(i){
         menuItem(text =  i18n$t(onglets[i,"libelle"]),tabName = onglets[i, "id"])
       })
+      
     )
   ),
   
