@@ -9,7 +9,7 @@ options(encoding = "UTF-8", stringsAsFactors = F,
 ##### Lecture environnement, et marquage des dataframes #####
 
 # Lecture environnement
-env_debut <<- NULL
+env_debut <<- ls()
 
 # Listes des objets de l'environnement de type dataframe
 if (length(env_debut) > 0){
