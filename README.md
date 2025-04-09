@@ -5,8 +5,6 @@ Rgonomie <img src="app/www/logo_rgonomie_transparent.png" width=110 align="right
 
 :uk: / :us: This project hosts the source code for the Shiny Rgonomie application from [MASA](https://agreste.agriculture.gouv.fr/agreste-web/).
 
-Rgonomie est disponible en ligne / is available online: https://agreste.shinyapps.io/Rgonomie/
-
 ## Objectif
 
 :fr:  
@@ -32,7 +30,7 @@ Users wishing to learn more can consult [on this site](https://ssm-agriculture.g
 
 ## Mode d'emploi
 
-A venir...  
+TO DO 
 
 ## Contributions
 
