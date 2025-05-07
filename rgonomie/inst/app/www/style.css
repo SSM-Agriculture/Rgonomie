@@ -1,0 +1,376 @@
+/********************************************/
+/************** Balises titres **************/
+/********************************************/
+
+h3 {
+  margin-top : -5px;
+}
+
+h5 {
+  font-weight : bold;
+  font-family : "Arial";
+}
+
+/********************************************/
+/************** Couleurs textes *************/
+/********************************************/
+
+/************** Bleu **************/
+
+.bleu {
+  color : #3E87B1;
+}
+
+/************** Orange **************/
+
+.orange {
+  color : #DF8959;
+}
+
+/************** Rouge **************/
+
+.rouge {
+  color : #C81010;
+}
+
+/************** Vert **************/
+
+.vert {
+  color : #70AD27;
+}
+
+/********************************************/
+/**** Affichage de l'utilisateur connecté ***/
+/********************************************/
+
+.icon-user {
+  color : white;
+  margin-top : 15px;
+  margin-right : 10px;
+}
+
+.utilisateur {
+  color : white;
+  margin-top : 16px;
+  margin-right : 10px;
+  font-family : "Arial";
+}
+
+/********************************************/
+/******************* Aide *******************/
+/********************************************/
+
+/************** Aides par défaut **************/
+
+#capibara, #cerise, #bmis {
+  line-height : 0.2;
+  border-color : rgba(244, 244, 244, 0);
+  background-color : rgba(244, 244, 244, 0);
+  font-family : "Arial";
+}
+
+/************** Aide à télécharger **************/
+
+#pdf, #html {
+  border-radius : 0;
+  color : #444444;
+  background-color : rgba(244, 244, 244, 0);
+  border-color : #F4F4F4;
+  text-align : left;
+  font-family : "Arial";
+}
+
+#pdf:hover, #html:hover {
+  background-color : #F4F4F4;
+}
+
+/************** Icônes téléchargements **************/
+
+.fa-download {
+  color : #3C763D;
+  padding: 0 30px 0 0;
+}
+
+/********************************************/
+/*************** Icône quitter **************/
+/********************************************/
+
+#quitter {
+  color : white;
+  margin-top : 9px;
+  border-color : rgba(244, 244, 244, 0);
+  background-color : rgba(244, 244, 244, 0);
+}
+
+/********************************************/
+/*************** Commentaires ***************/
+/********************************************/
+
+#com_1_1, #com_1_2, #com_1_3, #com_2_1, #com_2_2, #com_2_3 {
+  height : 70px;
+  white-space : pre-wrap;
+  word-break : normal;
+  font-family : "Arial";
+}
+
+/********************************************/
+/************* Message d'erreur *************/
+/********************************************/
+
+#erreur {
+  color : red;
+}
+
+/********************************************/
+/******* Bouton supprimer les filtres *******/
+/********************************************/
+
+#group_1_1-reset_all {
+  color : #616161;
+  font-weight : bold;
+}
+
+#group_1_1-reset_all:hover {
+  color : #909090;
+  font-weight : bold;
+}
+
+/********************************************/
+/************** Boutons actions *************/
+/********************************************/
+
+/************** Enregistrer **************/
+
+#enregistrer {
+  color : black;
+  background-color : #EF9161;
+  border-color : black;
+  font-family : "Arial";
+}
+
+#enregistrer:hover {
+  color : black;
+  background-color : #FFA979;
+  border-color : black;
+  font-family : "Arial";
+}
+
+/************** Rafraîchir **************/
+
+#rafraichir {
+  color : black;
+  background-color : #4495C4;
+  border-color : black;
+  font-family : "Arial";
+}
+
+#rafraichir:hover {
+  color : black;
+  background-color : #5CADDC;
+  border-color : black;
+  font-family : "Arial";
+}
+
+/************** Initialisation **************/
+
+#init {
+  color : black;
+  background-color : #EF9161;
+  border-color : black;
+  font-family : "Arial";
+}
+
+#init:hover {
+  color : black;
+  background-color : #FFA979;
+  border-color : black;
+  font-family : "Arial";
+}
+
+/********************************************/
+/************** Logos et labels *************/
+/********************************************/
+
+.import_logo {
+  margin-top : 10px;
+}
+
+.import_label {
+  margin-top : -20px;
+  margin-left : 25px;
+  font-family : "Arial";
+  font-weight : bold;
+}
+
+/********************************************/
+/************* Boutons datatable ************/
+/********************************************/
+
+/************** CSV **************/
+
+.dt-button.buttons-csv {
+  color : black;
+  font-weight : bold;
+  background : #70AD27;
+  border-color : black;
+  font-family : "Arial";
+  margin-left : 40px;
+}
+
+.dt-button.buttons-csv:hover {
+  color : black;
+  font-weight : bold;
+  background : #88C53F !important;
+  border-color : black;
+  font-family : "Arial";
+  margin-left : 40px;
+}
+
+/************** PDF **************/
+
+.dt-button.buttons-pdf {
+  color : black;
+  font-weight : bold;
+  background : #F84040;
+  border-color : black;
+  font-family : "Arial";
+}
+
+.dt-button.buttons-pdf:hover {
+  color : black;
+  font-weight : bold;
+  background : #FF5858 !important;
+  border-color : black;
+  font-family : "Arial";
+}
+
+/************** Copier **************/
+
+.dt-button.buttons-copy {
+  color : black;
+  font-weight : bold;
+  background : #B1B1B1;
+  border-color : black;
+  font-family : "Arial";
+}
+
+.dt-button.buttons-copy:hover {
+  color : black;
+  font-weight : bold;
+  background : #C9C9C9 !important;
+  border-color : black;
+  font-family : "Arial";
+}
+
+/************** Imprimer **************/
+
+.dt-button.buttons-print {
+  color : black;
+  font-weight : bold;
+  background : #4495C4;
+  border-color : black;
+  font-family : "Arial";
+}
+
+.dt-button.buttons-print:hover {
+  color : black;
+  font-weight : bold;
+  background : #5CADDC !important;
+  border-color : black;
+  font-family : "Arial";
+}
+
+/********************************************/
+/************ Tableaux de données ***********/
+/********************************************/
+
+/************** Table **************/
+
+table.dataTable {
+  font-size : 14px;
+}
+
+/************** En-tête des colonnes **************/
+
+th {
+  text-align: center !important;
+  background-color : #222d32;
+  color : white;
+}
+
+/************** Cellules de la table **************/
+
+td {
+  text-align: center !important;
+}
+
+/********************************************/
+/****************** Filtres *****************/
+/********************************************/
+
+/************** Filtres variables **************/
+
+.filtre_variables {
+  border-color : #DF8959;
+  background-color  : white;
+  box-shadow : 0 0 2px #DF8959;
+}
+
+/************** Filtres par défaut **************/
+
+.selectize-group .selectize-input {
+  border-color : #3E87B1 !important;
+  background-color : white !important;
+  box-shadow : 0 0 4px #3E87B1 !important;
+  width : 75%;
+  height : 60px !important;
+  overflow-x : scroll;
+}
+
+.selectize-dropdown {
+  border-color : #3E87B1 !important;
+  background-color : white !important;
+  box-shadow : 0 0 4px #3E87B1 !important;
+}
+
+/************** Filtre contient **************/
+
+#filtre_1_2 {
+  border-color : #3E87B1 !important;
+  box-shadow : 0 0 4px #3E87B1 !important;
+}
+
+/************** Filtres alerte **************/
+  
+#alerte_egal+ div>.selectize-input {
+  border-color : #D82020 !important; 
+  box-shadow : 0 0 2px #D82020 !important;
+}
+  
+#alerte_egal+ div>.selectize-dropdown {
+  border-color : #D82020 !important;
+  box-shadow : 0 0 2px #D82020 !important;
+}
+
+#alerte_inf, #alerte_sup {
+  border-color : #D82020 !important;
+  box-shadow : 0 0 2px #D82020 !important;
+}
+
+/************** Filtres import **************/
+
+#dossier+ div>.selectize-input, #fichier+ div>.selectize-input {
+  border-color : #70AD27 !important; 
+  box-shadow : 0 0 2px #70AD27 !important;
+}
+  
+#dossier+ div>.selectize-dropdown, #fichier+ div>.selectize-dropdown {
+  border-color : #70AD27 !important; 
+  box-shadow : 0 0 2px #70AD27 !important;
+}
+
+
+/************** Boutons **************/
+#consulter_a_propos {
+  background-color: #70AD27 !important;
+}

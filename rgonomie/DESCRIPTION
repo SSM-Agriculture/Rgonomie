@@ -1,0 +1,37 @@
+Package: rgonomie
+Title: App Shiny rgonomie
+Version: 0.0.0.9000
+Authors@R: 
+        c(person(given = "Damien",
+             family = "Dotta",
+             role = c("aut", "cre"),
+             email = "damien.dotta@agriculture.gouv.fr"))
+Description: Package qui contient l'application Shiny rgoonomie
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    arrow,
+    dplyr,
+    DT,
+    haven,
+    lubridate,
+    readODS,
+    readr,
+    readxl,
+    rstudioapi,
+    shiny,
+    shiny.i18n,
+    shinyalert,
+    shinybusy,
+    shinydashboard,
+    shinyFiles,
+    shinyjs,
+    shinyWidgets,
+    spatstat,
+    stats,
+    stringr,
+    tables,
+    tidyr,
+    xlsx
