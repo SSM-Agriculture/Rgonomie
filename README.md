@@ -1,36 +1,32 @@
-Rgonomie <img src="app/www/logo_rgonomie_transparent.png" width=110 align="right"/>
+rgonomie <img src="rgonomie/inst/app/www/logo_rgonomie_transparent.png" width=110 align="right"/>
 ======================================
 
-:fr: Ce projet héberge le code source de l'application Shiny Rgonomie du [MASA](https://agreste.agriculture.gouv.fr/agreste-web/).  
-
-:uk: / :us: This project hosts the source code for the Shiny Rgonomie application from [MASA](https://agreste.agriculture.gouv.fr/agreste-web/).
-
-## Motivation
+## Description
 
 :fr:  
-Cette application a été développé au sein du Service de la Statistique et de la Prospective (SSP) du [Ministère de l'Agriculture et de la Souveraineté Alimentaire](https://agriculture.gouv.fr/).
 
-Son objectif est de permettre aux utilisateur d'utiliser [le langage R](https://www.r-project.org/) via une interface graphique pour exploiter des fichiers de données et réaliser des traitements statistiques de base.
+Cette application a été développé au sein du Service de la Statistique et de la Prospective (SSP) du Ministère de l'Agriculture et de la Souveraineté Alimentaire.  
 
-Pour des traitements statistiques plus avancées ou des manipulations de données plus complexes, il est recommandé d'utiliser le langage R via un environnement de développement intégré comme [RStudio](https://posit.co/download/rstudio-desktop/) ou [VSCode](https://code.visualstudio.com/).
+Son objectif est de permettre aux utilisateur d'utiliser le langage via une interface graphique pour exploiter des fichiers de données et réaliser des traitements statistiques de base.  
 
-Les utilisateurs qui désirent se former peuvent consulter par exemple [sur ce site](https://ssm-agriculture.github.io/site-formations-R/). 
+our des traitements statistiques plus avancées ou des manipulations de données plus complexes, il est recommandé d'utiliser le langage R via un environnement de développement intégré comme RStudio ou VSCode par exemple.
 
 ---------
 
 :uk: / :us:  
 
-This application has been developed within the Service de la Statistique et de la Prospective (SSP) of the [Ministère de l'Agriculture et de la Souveraineté Alimentaire](https://agriculture.gouv.fr/).
+This application was developed within the Statistics and Foresight Department of the Ministry of Agriculture and Food Sovereignty.  
 
-Its aim is to enable users to use [the R language](https://www.r-project.org/) via a graphical interface to exploit data files and carry out basic statistical processing.
+Its purpose is to enable users to use the language via a graphical interface to work with data files and perform basic statistical processing.  
 
-For more advanced statistical processing or more complex data manipulation, it is recommended to use the R language via an integrated development environment such as [RStudio](https://posit.co/download/rstudio-desktop/) or [VSCode](https://code.visualstudio.com/).
+For more advanced statistical processing or complex data manipulation, it is recommended to use the R language via an integrated development environment such as RStudio or VSCode, for example.
 
-Users wishing to learn more can consult [on this site](https://ssm-agriculture.github.io/site-formations-R/).
+## Package Installation
 
-## Guide d'utilisation / User guide
-
-TO DO ...
+```
+devtools::load_all()
+rgonomie::runApp()
+```
 
 ## Contributions
 
