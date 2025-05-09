@@ -33,7 +33,7 @@ ui_propos <- function(id_onglet){
              h3(i18n$t("Hébergement")),
              h4("Onyxia - ",
                 tags$a(href = "https://datalab.sspcloud.fr/", 
-                       "SSP CLoud"))
+                       "SSP Cloud"))
              
       )
     )
