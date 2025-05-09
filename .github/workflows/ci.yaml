@@ -21,7 +21,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v3
         with:
-          images: SSM-Agriculture/Rgonomie
+          images: ssmagr/Rgonomie
         # Étape 2 : génère les métadonnées Docker (tags et labels) à partir du contexte Git (branche, tag, etc.)
         # Définit les tags pour l'image Docker avec le nom du dépôt `inseefrlab/shiny-app-template`
       - name: Set up QEMU
