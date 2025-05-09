@@ -31,9 +31,9 @@ ui_propos <- function(id_onglet){
              h4(i18n$t("Ministère de l'Agriculture et de la Souveraineté Alimentaire.")),
              br(),
              h3(i18n$t("Hébergement")),
-             h4("Posit - ",
-                tags$a(href = "https://www.shinyapps.io/", 
-                       "Shinyapps.io"))
+             h4("Onyxia - ",
+                tags$a(href = "https://datalab.sspcloud.fr/", 
+                       "SSP CLoud"))
              
       )
     )
