@@ -21,9 +21,9 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v3
         with:
-          images: ssmagr/Rgonomie
+          images: ssmagr/rgonomie
         # Étape 2 : génère les métadonnées Docker (tags et labels) à partir du contexte Git (branche, tag, etc.)
-        # Définit les tags pour l'image Docker avec le nom du dépôt `inseefrlab/shiny-app-template`
+        # Définit les tags pour l'image Docker avec le nom du dépôt `ssmagr/rgonomie`
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       # Étape 3 : installe QEMU pour permettre les builds multi-architecture (ex: x86_64, arm64)
@@ -46,7 +46,7 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            ${{ github.ref == 'refs/heads/main' && 'inseefrlab/shiny-app-template:latest' || '' }}
+            ${{ github.ref == 'refs/heads/main' && 'ssmagr/rgonomie:latest' || '' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           # Étape 6 : construit et pousse l'image Docker
           # - Construit à partir du Dockerfile du repo
