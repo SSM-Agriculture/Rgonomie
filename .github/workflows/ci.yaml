@@ -1,32 +1,43 @@
-name: Dockerize
+name: Dockerize # Nom du workflow GitHub Actions affiché dans l’interface GitHub
 
+# Déclenche le workflow :
+# - à chaque push sur la branche "main"
+# - à chaque création de tag (quel qu'il soit, grâce à "*")
 on:
   push:
     tags:
       - "*"
     branches:
-      - master
+      - main
 
 jobs:
   docker:
     runs-on: ubuntu-latest
+    # Définit un job nommé "docker" qui s'exécutera sur une machine virtuelle Ubuntu
     steps:
       - uses: actions/checkout@v2
+      # Étape 1 : clone le dépôt GitHub dans l’environnement de travail
       - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v3
         with:
-          images: inseefrlab/shiny-app-template
+          images: SSM-Agriculture/Rgonomie
+        # Étape 2 : génère les métadonnées Docker (tags et labels) à partir du contexte Git (branche, tag, etc.)
+        # Définit les tags pour l'image Docker avec le nom du dépôt `inseefrlab/shiny-app-template`
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
+      # Étape 3 : installe QEMU pour permettre les builds multi-architecture (ex: x86_64, arm64)
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
+      # Étape 4 : configure Docker Buildx, une extension pour faire des builds avancés et multi-architecture
       - name: Login to DockerHub
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+        # Étape 5 : se connecte à DockerHub, uniquement si ce n'est pas un pull request (sécurité)
+        # Utilise les secrets GitHub pour l'authentification
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
@@ -37,5 +48,11 @@ jobs:
             ${{ steps.docker_meta.outputs.tags }}
             ${{ github.ref == 'refs/heads/main' && 'inseefrlab/shiny-app-template:latest' || '' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+          # Étape 6 : construit et pousse l'image Docker
+          # - Construit à partir du Dockerfile du repo
+          # - Push si ce n’est pas un pull request
+          # - Ajoute les tags générés dynamiquement (ex : tag Git ou "latest" si branche main)
+          # - Ajoute des labels standard (ex: VCS ref, source, etc.)
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+        # Étape 7 : affiche le digest SHA256 de l’image Docker construite (utile pour le suivi des builds)
