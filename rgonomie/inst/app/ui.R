@@ -8,22 +8,6 @@ ui <- dashboardPage(
     
     ##### Menu déroulant dans l'en-tête #####
     
-    # Bouton de téléchargement de l'historique
-    tags$li(
-      class = "dropdown",
-      style = "display: flex; align-items: center; height: 75px; margin-right: 20px;",
-      tags$div(
-        downloadButton("telecharger_histo", 
-                       "R code")
-      )
-    ),
-    
-    # Espace vide
-    tags$li(
-      class = "dropdown",
-      style = "width: 30px;"  # Espace entre les deux boutons
-    ),
-    
     # Choix de la langue
     tags$li(
       class = "dropdown",
