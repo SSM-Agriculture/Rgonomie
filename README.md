@@ -1,9 +1,11 @@
 Rgonomie <img src="rgonomie/inst/app/www/logo_rgonomie_transparent.png" width=110 align="right"/>
 ======================================
 
-:fr: Ce projet héberge le code source de l'application Shiny Rgonomie du [MASA](https://agreste.agriculture.gouv.fr/agreste-web/).  
+:fr: Ce projet héberge le code source de l'application Shiny Rgonomie du [MASA](https://agreste.agriculture.gouv.fr/agreste-web/).   
+L'application est disponible à cette URL : https://rgonomie.lab.sspcloud.fr/
 
-:uk: / :us: This project hosts the source code for the Shiny Rgonomie application from [MASA](https://agreste.agriculture.gouv.fr/agreste-web/).
+:uk: / :us: This project hosts the source code for the Shiny Rgonomie application from [MASA](https://agreste.agriculture.gouv.fr/agreste-web/).  
+The application is available at this URL: https://rgonomie.lab.sspcloud.fr/
 
 ## Description
 
