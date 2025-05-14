@@ -30,25 +30,6 @@ ui <- dashboardPage(
         target = "_blank",
         icon("github", class = "fab fa-github", style = "font-size: 20px; padding: 14px;")
       )
-    ),
-    
-    # Fonction javascript pour fermer la fenêtre lors du click sur le bouton quitter
-    tags$li(
-      class = "dropdown",
-      extendShinyjs(
-        text = "shinyjs.closeWindow = function() { window.close(); }",
-        functions = c("closeWindow")
-      )
-    ),
-    
-    # Icône quitter
-    tags$li(class = "dropdown",
-            tags$div(class="quit", 
-                     style = "display: flex; align-items: center; height: 75px;",
-                     actionButton(inputId = "quitter", 
-                                                label = NULL, 
-                                                icon = icon("power-off", class="fas fa-power-off"))
-            )
     )
   ),
   
