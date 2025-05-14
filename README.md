@@ -15,7 +15,7 @@ Cette application a été développé au sein du Service de la Statistique et de
 
 Son objectif est de permettre aux utilisateur d'utiliser le langage via une interface graphique pour exploiter des fichiers de données et réaliser des traitements statistiques de base.  
 
-our des traitements statistiques plus avancées ou des manipulations de données plus complexes, il est recommandé d'utiliser le langage R via un environnement de développement intégré comme RStudio ou VSCode par exemple.
+Pour des traitements statistiques plus avancées ou des manipulations de données plus complexes, il est recommandé d'utiliser le langage R via un environnement de développement intégré comme RStudio ou VSCode par exemple.
 
 ---------
 
