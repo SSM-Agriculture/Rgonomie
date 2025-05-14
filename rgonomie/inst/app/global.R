@@ -15,15 +15,9 @@ options(encoding = "UTF-8", stringsAsFactors = F,
 
 ##### Lecture environnement, et marquage des dataframes #####
 
-# Lecture environnement
-env_debut <<- ls()
-
-# Listes des objets de l'environnement de type dataframe
-if (length(env_debut) > 0){
-  liste_df <- env_debut[sapply(env_debut, function(obj) {is.data.frame(get(obj))})]
-} else{
-  liste_df <- c()
-}
+# Initialisation environnement
+env_debut <<- character(0)
+liste_df <- c()
 
 # Créer une fonction is.DateTime
 is.DateTime <- function(x) {
@@ -157,10 +151,3 @@ pickerInputOptions <- pickerOptions(
   deselectAllText="Tout désélectionner")
 
 
-##### Routine qui s'exécute à l'arrêt de l'application #####
-onStop(function() {
-
-  # On supprime les objets qui n'étaient pas présents au lancement du programme
-  rm(list=ls(envir = .GlobalEnv)[!(ls(envir = .GlobalEnv) %in% env_debut)], envir = .GlobalEnv)
-  cat("Fermeture d'Rgonomie\n")
-})
