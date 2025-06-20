@@ -34,6 +34,12 @@ devtools::load_all()
 rgonomie::runApp()
 ```
 
+## Documentation
+
+:fr:  
+
+Un diaporama de présentation sous forme de guide d'utilisation est disponible à cette adresse : https://ssm-agriculture.github.io/formation-rgonomie
+
 ## Contributions
 
 :fr: Si vous constatez des bugs, merci d'ouvrir une [issue](https://github.com/SSM-Agriculture/Rgonomie/issues) ou une [Pull Request](https://github.com/SSM-Agriculture/Rgonomie/pulls).
