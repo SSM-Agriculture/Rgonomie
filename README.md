@@ -38,7 +38,8 @@ rgonomie::runApp()
 
 :fr:  
 
-Un diaporama de présentation sous forme de guide d'utilisation est disponible à cette adresse : https://ssm-agriculture.github.io/formation-rgonomie
+Un diaporama de présentation sous forme de guide d'utilisation est disponible à cette adresse :  
+https://ssm-agriculture.github.io/formation-rgonomie
 
 ## Contributions
 
